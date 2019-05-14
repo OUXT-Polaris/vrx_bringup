@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+<launch>
+    <!-- Control -->
+    <include file="$(find vrx_control)/launch/speed_controller.launch" />
+</launch>

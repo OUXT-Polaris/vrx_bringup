@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<launch>
+    <node pkg="nodelet" type="nodelet" name="pcl_manager" args="manager" output="screen" />
+
+    <!-- Run a Euclidean cluster extraction to clean NaNs -->
+    <node pkg="nodelet" type="nodelet" name="euclidean_cluster_extraction" args="load pcl/EuclideanClusterExtraction pcl_manager" output="screen">
+        <rosparam>
+            cluster_tolerance : 0.1
+            spatial_locator : 0
+        </rosparam>
+    </node>
+</launch>

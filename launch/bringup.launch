@@ -1,5 +1,14 @@
 <?xml version="1.0"?>
 <launch>
-    <!-- Frames -->
-    <include file="$(find vrx_bringup)/launch/frame.launch" />
-<launch>
+    <!-- Robot -->
+    <include file="$(find vrx_bringup)/launch/robot/robot.launch"/>
+
+    <!-- Control -->
+    <include file="$(find vrx_bringup)/launch/control/control.launch"/>
+
+    <!-- Planning -->
+    <include file="$(find vrx_bringup)/launch/planning/planning.launch"/>
+
+    <!-- Perception -->
+    <include file="$(find vrx_bringup)/launch/perception/perception.launch" />
+</launch>

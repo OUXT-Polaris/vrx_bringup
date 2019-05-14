@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+<launch>
+    <!-- Localization -->
+    <include file="$(find vrx_bringup)/launch/perception/localization.launch" />
+</launch>
