@@ -22,14 +22,7 @@ include_directories(
 )
 
 # Install launch files
-foreach(dir launch config)
+foreach(dir launch)
   install(DIRECTORY ${dir}/
     DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/${dir})
 endforeach(dir)
-
-# Install Python scripts
-set(PYTHON_SCRIPTS scripts/initial_pose_setter.py)
-foreach(scripts ${PYTHON_SCRIPTS})
-        catkin_install_python(PROGRAMS ${scripts}
-        DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION})
-endforeach(scripts)
