@@ -3,16 +3,21 @@
     <!-- args -->
     <arg name="world_frame" default="earth"/>
     <arg name="map_frame" default="map"/>
-    <arg name="fix_topic" default="/gps/fix"/>
+    <arg name="geopose_topic" default="/nmea_to_geopose_node/geopose"/>
+    <arg name="nmea_topic" default="/nmea_sentence"/>
     
     <!-- Particle Filter Localizer -->
     <include file="$(find pf_localization)/launch/pf_localization.launch">
     </include>
 
     <!-- Geographic Conversion -->
-    <include file="$(find geographic_conversion)/launch/geographic_conversion.launch">
-        <arg name="fix_topic" default="$(arg fix_topic)"/>
+    <include file="$(find geographic_conversion)/launch/geopose_conversion.launch">
+        <arg name="geopose_topic" default="$(arg geopose_topic)"/>
         <arg name="map_frame" default="$(arg map_frame)"/>
+    </include>
+
+    <include file="$(find nmea_to_geopose)/launch/nmea_to_geopose.launch">
+        <arg name="input_topic" default="$(arg nmea_topic)"/>
     </include>
 
     <!-- World to Map Frame -->
