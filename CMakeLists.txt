@@ -21,8 +21,8 @@ include_directories(
   ${catkin_INCLUDE_DIRS}
 )
 
-# Install launch files
-foreach(dir launch)
+# Install launch/rviz files
+foreach(dir launch rviz)
   install(DIRECTORY ${dir}/
     DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/${dir})
 endforeach(dir)

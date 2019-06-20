@@ -11,4 +11,7 @@
 
     <!-- Perception -->
     <include file="$(find vrx_bringup)/launch/perception/perception.launch" />
+
+    <!-- Visualization -->
+    <include file="$(find vrx_bringup)/launch/visualization/visualization.launch" />
 </launch>

@@ -21,6 +21,8 @@
         <arg name="num_particles" default="$(arg num_particles)"/>
         <arg name="twist_topic" default="$(arg twist_topic)"/>
         <arg name="pose_topic" default="$(arg pose_topic)"/>
+        <arg name="publish_marker" default="true"/>
+        <arg name="respawn" default="true"/>
     </include>
 
     <!-- Geographic Conversion -->
