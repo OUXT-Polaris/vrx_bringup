@@ -5,9 +5,22 @@
     <arg name="map_frame" default="map"/>
     <arg name="geopose_topic" default="/nmea_to_geopose_node/geopose"/>
     <arg name="nmea_topic" default="/nmea_sentence"/>
+    <arg name="update_rate" default="30"/>
+    <arg name="num_particles" default="100"/>
+    <arg name="twist_topic" default="/imu_to_twist_node/twist"/>
+    <arg name="pose_topic" default="/geopose_converter_node/pose"/>
+
+    <include file="$(find twist_calculator)/launch/twist_calculator.launch">
+        <arg name="publish_timestamp" value="true"/>
+    </include>
     
     <!-- Particle Filter Localizer -->
     <include file="$(find pf_localization)/launch/pf_localization.launch">
+        <arg name="estimate_3d_pose" default="false"/>
+        <arg name="update_rate" default="$(arg update_rate)"/>
+        <arg name="num_particles" default="$(arg num_particles)"/>
+        <arg name="twist_topic" default="$(arg twist_topic)"/>
+        <arg name="pose_topic" default="$(arg pose_topic)"/>
     </include>
 
     <!-- Geographic Conversion -->
@@ -16,6 +29,7 @@
         <arg name="map_frame" default="$(arg map_frame)"/>
     </include>
 
+    <!-- NMEA sentence converter -->
     <include file="$(find nmea_to_geopose)/launch/nmea_to_geopose.launch">
         <arg name="input_topic" default="$(arg nmea_topic)"/>
     </include>
