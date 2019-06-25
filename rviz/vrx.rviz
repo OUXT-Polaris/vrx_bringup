@@ -6,10 +6,11 @@ Panels:
       Expanded:
         - /Global Options1
         - /Status1
-        - /Pose1
+        - /Grid1
         - /RobotModel1
         - /TF1/Frames1
         - /MarkerArray1
+        - /Pose2
       Splitter Ratio: 0.5
     Tree Height: 728
   - Class: rviz/Selection
@@ -53,7 +54,7 @@ Visualization Manager:
         Y: 0
         Z: 0
       Plane: XY
-      Plane Cell Count: 10
+      Plane Cell Count: 100
       Reference Frame: <Fixed Frame>
       Value: true
     - Alpha: 1
@@ -61,7 +62,7 @@ Visualization Manager:
       Axes Radius: 0.10000000149011612
       Class: rviz/Pose
       Color: 0; 255; 0
-      Enabled: true
+      Enabled: false
       Head Length: 0.30000001192092896
       Head Radius: 0.10000000149011612
       Name: Pose
@@ -70,7 +71,7 @@ Visualization Manager:
       Shape: Arrow
       Topic: /pf_localization_node/current_pose
       Unreliable: false
-      Value: true
+      Value: false
     - Alpha: 1
       Class: rviz/RobotModel
       Collision Enabled: false
@@ -236,6 +237,8 @@ Visualization Manager:
           Value: true
         imu_wamv_link:
           Value: true
+        initial_pose:
+          Value: true
         lateral_engine_link:
           Value: true
         lateral_propeller_link:
@@ -312,120 +315,38 @@ Visualization Manager:
               right_engine_link:
                 right_propeller_link:
                   {}
+            initial_pose:
+              {}
       Update Interval: 0
       Value: true
     - Class: rviz/MarkerArray
-      Enabled: true
+      Enabled: false
       Marker Topic: /pf_localization_node/marker
       Name: MarkerArray
       Namespaces:
-        marker0: true
-        marker1: true
-        marker10: true
-        marker11: true
-        marker12: true
-        marker13: true
-        marker14: true
-        marker15: true
-        marker16: true
-        marker17: true
-        marker18: true
-        marker19: true
-        marker2: true
-        marker20: true
-        marker21: true
-        marker22: true
-        marker23: true
-        marker24: true
-        marker25: true
-        marker26: true
-        marker27: true
-        marker28: true
-        marker29: true
-        marker3: true
-        marker30: true
-        marker31: true
-        marker32: true
-        marker33: true
-        marker34: true
-        marker35: true
-        marker36: true
-        marker37: true
-        marker38: true
-        marker39: true
-        marker4: true
-        marker40: true
-        marker41: true
-        marker42: true
-        marker43: true
-        marker44: true
-        marker45: true
-        marker46: true
-        marker47: true
-        marker48: true
-        marker49: true
-        marker5: true
-        marker50: true
-        marker51: true
-        marker52: true
-        marker53: true
-        marker54: true
-        marker55: true
-        marker56: true
-        marker57: true
-        marker58: true
-        marker59: true
-        marker6: true
-        marker60: true
-        marker61: true
-        marker62: true
-        marker63: true
-        marker64: true
-        marker65: true
-        marker66: true
-        marker67: true
-        marker68: true
-        marker69: true
-        marker7: true
-        marker70: true
-        marker71: true
-        marker72: true
-        marker73: true
-        marker74: true
-        marker75: true
-        marker76: true
-        marker77: true
-        marker78: true
-        marker79: true
-        marker8: true
-        marker80: true
-        marker81: true
-        marker82: true
-        marker83: true
-        marker84: true
-        marker85: true
-        marker86: true
-        marker87: true
-        marker88: true
-        marker89: true
-        marker9: true
-        marker90: true
-        marker91: true
-        marker92: true
-        marker93: true
-        marker94: true
-        marker95: true
-        marker96: true
-        marker97: true
-        marker98: true
-        marker99: true
+        {}
       Queue Size: 100
+      Value: false
+    - Alpha: 1
+      Axes Length: 1
+      Axes Radius: 0.10000000149011612
+      Class: rviz/Pose
+      Color: 255; 25; 0
+      Enabled: true
+      Head Length: 3
+      Head Radius: 3
+      Name: Pose
+      Shaft Length: 10
+      Shaft Radius: 1
+      Shape: Arrow
+      Topic: /geopose_converter_node/pose
+      Unreliable: false
       Value: true
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
     Default Light: true
-    Fixed Frame: base_link
+    Fixed Frame: initial_pose
     Frame Rate: 30
   Name: root
   Tools:
@@ -449,7 +370,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 33.31005096435547
+      Distance: 59.989784240722656
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
@@ -464,10 +385,10 @@ Visualization Manager:
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 1.0953986644744873
-      Target Frame: <Fixed Frame>
+      Pitch: 0.510398268699646
+      Target Frame: base_link
       Value: Orbit (rviz)
-      Yaw: 1.845394492149353
+      Yaw: 2.7454075813293457
     Saved: ~
 Window Geometry:
   Displays:
