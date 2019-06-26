@@ -1,12 +1,10 @@
 <state_machine>
-    <init_state name="waiting"/>
+    <callback tag="WaypointServer::checkWaypointReached" when="always" states="sailing,station_keeping"/>
 
-    <transition from = "waiting" to="ready" name="system_ready"/>
+    <init_state name="station_keeping"/>
 
-    <transition from = "ready" to="go" name="engage"/>
-
-    <transition from = "go" to="sailing" name="load_waypoint"/>
-    <transition from = "go" to="station_keeping" name="reach_waypoint"/>
+    <transition from = "station_keeping" to="sailing" name="load_waypoint"/>
+    <transition from = "station_keeping" to="station_keeping" name="reach_waypoint"/>
 
     <transition from = "station_keeping" to="sailing" name="load_waypoint"/>
     <transition from = "station_keeping" to="navigation_finished" name="reach_waypoint_end"/>

@@ -1,0 +1,11 @@
+<state_machine>
+    <init_state name="waiting"/>
+
+    <transition from = "waiting" to="ready" name="system_ready"/>
+
+    <transition from = "ready" to="go" name="engage"/>
+
+    <transition from = "go" to="go_straight" name="go_straight_task_start"/>
+
+    <transition from = "go_straight" to="waiting" name="task_finished"/>
+</state_machine>
