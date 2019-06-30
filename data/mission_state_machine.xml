@@ -1,11 +1,13 @@
 <state_machine>
+    <callback tag="WaypointServer::checkWaypointReached" when="always" states="traverse_navigation_channel"/>
+
     <init_state name="waiting"/>
 
     <transition from = "waiting" to="ready" name="system_ready"/>
 
     <transition from = "ready" to="go" name="engage"/>
 
-    <transition from = "go" to="go_straight" name="go_straight_task_start"/>
+    <transition from = "go" to="traverse_navigation_channel" name="traverse_navigation_channel_task_start"/>
 
-    <transition from = "go_straight" to="waiting" name="task_finished"/>
+    <transition from = "traverse_navigation_channel" to="waiting" name="task_finished"/>
 </state_machine>
