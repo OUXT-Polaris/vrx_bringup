@@ -1,5 +1,8 @@
 <?xml version="1.0"?>
 <launch>
+    <!-- Simulation -->
+    <!--<include file="$(find vrx_bringup)/launch/simulation/simulation.launch"/>-->
+
     <!-- Robot -->
     <include file="$(find vrx_bringup)/launch/robot/robot.launch"/>
 

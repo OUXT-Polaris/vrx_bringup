@@ -3,37 +3,53 @@
     <!-- args -->
     <arg name="world_frame" default="earth"/>
     <arg name="map_frame" default="map"/>
+    <arg name="base_link_frame" default="base_link"/>
     <arg name="geopose_topic" default="/nmea_to_geopose_node/geopose"/>
     <arg name="nmea_topic" default="/nmea_sentence"/>
     <arg name="update_rate" default="30"/>
-    <arg name="num_particles" default="100"/>
+    <arg name="num_particles" default="300"/>
     <arg name="twist_topic" default="/imu_to_twist_node/twist"/>
     <arg name="pose_topic" default="/geopose_converter_node/pose"/>
+    <arg name="imu_topic" default="/imu/data"/>
 
-    <include file="$(find twist_calculator)/launch/twist_calculator.launch">
+    <!-- Twist Calculation -->
+    <include file="$(find twist_calculator)/launch/imu_to_twist.launch">
         <arg name="publish_timestamp" value="true"/>
+        <arg name="curretn_twist_topic" value="/pose_to_twist_node/current_twist"/>
+        <arg name="enable_twist_reset" value="true"/>
+        <arg name="imu_topic" value="$(arg imu_topic)"/>
+        <arg name="robot_frame" value="$(arg base_link_frame)"/>
+    </include>
+
+    <include file="$(find twist_calculator)/launch/pose_to_twist.launch">
+        <arg name="publish_timestamp" value="true"/>
+        <arg name="pose_topic" value="/geopose_converter_node/pose"/>
+        <arg name="robot_frame" value="$(arg base_link_frame)"/>
     </include>
     
     <!-- Particle Filter Localizer -->
     <include file="$(find pf_localization)/launch/pf_localization.launch">
-        <arg name="estimate_3d_pose" default="false"/>
-        <arg name="update_rate" default="$(arg update_rate)"/>
-        <arg name="num_particles" default="$(arg num_particles)"/>
-        <arg name="twist_topic" default="$(arg twist_topic)"/>
-        <arg name="pose_topic" default="$(arg pose_topic)"/>
-        <arg name="publish_marker" default="true"/>
-        <arg name="respawn" default="true"/>
+        <arg name="estimate_3d_pose" value="false"/>
+        <arg name="update_rate" value="$(arg update_rate)"/>
+        <arg name="num_particles" value="$(arg num_particles)"/>
+        <arg name="twist_topic" value="$(arg twist_topic)"/>
+        <arg name="pose_topic" value="$(arg pose_topic)"/>
+        <arg name="publish_marker" value="true"/>
+        <arg name="respawn" value="true"/>
+        <arg name="expansion_reset_ess_threashold" value="5"/>
+        <arg name="sensor_reset_ess_threashold" value="3"/>
+        <arg name="sensor_reset_radius" value="5.0"/>
     </include>
 
     <!-- Geographic Conversion -->
     <include file="$(find geographic_conversion)/launch/geopose_conversion.launch">
-        <arg name="geopose_topic" default="$(arg geopose_topic)"/>
-        <arg name="map_frame" default="$(arg map_frame)"/>
+        <arg name="geopose_topic" value="$(arg geopose_topic)"/>
+        <arg name="map_frame" value="$(arg map_frame)"/>
     </include>
 
     <!-- NMEA sentence converter -->
     <include file="$(find nmea_to_geopose)/launch/nmea_to_geopose.launch">
-        <arg name="input_topic" default="$(arg nmea_topic)"/>
+        <arg name="input_topic" value="$(arg nmea_topic)"/>
     </include>
 
     <!-- World to Map Frame -->
