@@ -22,7 +22,7 @@ include_directories(
 )
 
 # Install launch/rviz files
-foreach(dir launch rviz)
+foreach(dir launch rviz config)
   install(DIRECTORY ${dir}/
     DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/${dir})
 endforeach(dir)

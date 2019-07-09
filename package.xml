@@ -27,6 +27,8 @@
   <exec_depend>rviz</exec_depend>
   <exec_depend>rostate_machine</exec_depend>
   <exec_depend>vrx_gazebo</exec_depend>
+  <exec_depend>mqtt_bridge</exec_depend>
+  <exec_depend>webrtc_ros</exec_depend>
 
   <!-- The export tag contains other, unspecified, tags -->
   <export>

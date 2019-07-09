@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <launch>
     <!-- Simulation -->
-    <!--<include file="$(find vrx_bringup)/launch/simulation/simulation.launch"/>-->
+    <include file="$(find vrx_bringup)/launch/simulation/simulation.launch"/>
 
     <!-- Robot -->
     <include file="$(find vrx_bringup)/launch/robot/robot.launch"/>
@@ -17,4 +17,7 @@
 
     <!-- Visualization -->
     <include file="$(find vrx_bringup)/launch/visualization/visualization.launch" />
+
+    <!-- Tools -->
+    <include file="$(find vrx_bringup)/launch/tools/tools.launch" />
 </launch>

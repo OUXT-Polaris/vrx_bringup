@@ -1,0 +1,24 @@
+mqtt:
+  client:
+    protocol: 4      # MQTTv311
+  connection:
+    host: localhost
+    port: 1883
+    keepalive: 60
+bridge:
+  - factory: mqtt_bridge.bridge:RosToMqttBridge
+    msg_type: geographic_msgs.msg:GeoPose
+    topic_from: /geopose_converter_node/geopose
+    topic_to: /geopose_converter_node/geopose
+  - factory: mqtt_bridge.bridge:RosToMqttBridge
+    msg_type: std_msgs.msg:String
+    topic_from: /mission_state_machine_node/dot_string
+    topic_to: /mission_state_machine_node/dot_string
+  - factory: mqtt_bridge.bridge:RosToMqttBridge
+    msg_type: std_msgs.msg:String
+    topic_from: /navigation_state_machine_node/dot_string
+    topic_to: /navigation_state_machine_node/dot_string
+  - factory: mqtt_bridge.bridge:RosToMqttBridge
+    msg_type: std_msgs.msg:String
+    topic_from: /control_state_machine_node/dot_string
+    topic_to: /control_state_machine_node/dot_string
