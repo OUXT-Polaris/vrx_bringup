@@ -1,5 +1,20 @@
 <?xml version="1.0"?>
 <launch>
-    <!-- Control -->
-    <include file="$(find vrx_control)/launch/speed_controller.launch" />
+    <arg name="control_command_topic" default="control_command"/>
+    <arg name="manual_command_topic" default="manual_command"/>
+    <arg name="current_command_topic" default="current_command"/>
+    <arg name="current_twist_topic" default="current_twist"/>
+    <arg name="target_twist_topic" default="target_twist"/>
+
+    <include file="$(find vrx_control)/launch/speed_controller.launch">
+        <arg name="control_command_topic" default="$(arg control_command_topic)"/>
+        <arg name="current_twist_topic" default="$(arg current_twist_topic)"/>
+        <arg name="target_twist_topic" default="$(arg target_twist_topic)"/>
+    </include>
+
+    <include file="$(find control_command_selector)/launch/control_command_selector.launch">
+        <arg name="control_command_topic" default="$(arg control_command_topic)"/>
+        <arg name="manual_command_topic" default="$(arg manual_command_topic)"/>
+        <arg name="current_command_topic" default="$(arg current_command_topic)"/>
+    </include>
 </launch>
