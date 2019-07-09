@@ -5,6 +5,8 @@
     <arg name="current_command_topic" default="current_command"/>
     <arg name="current_twist_topic" default="current_twist"/>
     <arg name="target_twist_topic" default="target_twist"/>
+    <arg name="use_gazebo" default="true"/>
+    <arg name="use_hardware" default="false"/>
 
     <include file="$(find vrx_control)/launch/speed_controller.launch">
         <arg name="control_command_topic" default="$(arg control_command_topic)"/>
@@ -17,4 +19,10 @@
         <arg name="manual_command_topic" default="$(arg manual_command_topic)"/>
         <arg name="current_command_topic" default="$(arg current_command_topic)"/>
     </include>
+
+    <include file="$(find robotx_hardware_interface)/launch/hardware_interface.launch">
+        <arg name="use_gazebo" default="$(arg use_gazebo)"/>
+        <arg name="use_hardware" default="$(arg use_hardware)"/>
+    </include>
+
 </launch>
