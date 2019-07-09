@@ -24,7 +24,7 @@
     <include file="$(find robotx_hardware_interface)/launch/hardware_interface.launch">
         <arg name="use_gazebo" value="$(arg use_gazebo)"/>
         <arg name="use_hardware" value="$(arg use_hardware)"/>
-        <arg name="output_rate" value="$(output_rate)"/>
+        <arg name="output_rate" value="$(arg output_rate)"/>
     </include>
 
 </launch>
