@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<launch>
+    <arg name="manager_name" default="pcl_manager"/>
+
+    <node pkg="nodelet" type="nodelet" name="$(arg manager_name)" args="manager" output="screen" />
+    
+    <node pkg="nodelet" type="nodelet" name="concat_filter" args="load pcl/PointCloudConcatenateDataSynchronizer $(arg manager_name)" output="screen">
+        <rosparam>
+            approximate_sync: true
+            queue_size: 20
+            output_frame : base_link
+            input_topics : 
+            - /velodyne_center/points
+            - /velodyne_front/points
+        </rosparam>
+    </node>
+
+    <node pkg="nodelet" type="nodelet" name="euclidean_cluster_extraction" args="load pcl/EuclideanClusterExtraction $(arg manager_name)" output="screen">
+        <rosparam>
+            cluster_tolerance : 0.1
+            spatial_locator : 0
+            publish_indices : true
+        </rosparam>
+    </node>
+</launch>

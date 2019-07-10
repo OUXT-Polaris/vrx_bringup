@@ -2,4 +2,20 @@
 <launch>
     <!-- Localization -->
     <include file="$(find vrx_bringup)/launch/perception/localization.launch" />
+
+    <!-- Pointcloud Processing -->
+    <include file="$(find vrx_bringup)/launch/perception/pointcloud_processing.launch" />
+
+    <!-- Image Processing -->
+    <group ns="left_camera">
+        <include file="$(find vrx_bringup)/launch/perception/image_processing.launch" />
+    </group>
+
+    <group ns="right_camera">
+        <include file="$(find vrx_bringup)/launch/perception/image_processing.launch" />
+    </group>
+
+    <group ns="middle_camera">
+        <include file="$(find vrx_bringup)/launch/perception/image_processing.launch" />
+    </group>
 </launch>
