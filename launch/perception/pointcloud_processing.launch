@@ -1,10 +1,14 @@
 <?xml version="1.0"?>
 <launch>
     <arg name="manager_name" default="pcl_manager"/>
+    <arg name="manager_threads" default="4" />
 
-    <node pkg="nodelet" type="nodelet" name="$(arg manager_name)" args="manager" output="screen" />
+    <node pkg="nodelet" type="nodelet" name="$(arg manager_name)" args="manager" output="screen">
+        <param name="num_worker_threads" value="$(arg manager_threads)" />
+    </node>
     
     <node pkg="nodelet" type="nodelet" name="concat_filter" args="load pcl/PointCloudConcatenateDataSynchronizer $(arg manager_name)" output="screen">
+        <remap from="~output" to="points_concat"/>
         <rosparam>
             approximate_sync: true
             queue_size: 20
@@ -20,6 +24,22 @@
             cluster_tolerance : 0.1
             spatial_locator : 0
             publish_indices : true
+        </rosparam>
+    </node>
+
+    <node pkg="nodelet" type="nodelet" name="crop_box_filter" args="load pcl/CropBox pcl_manager" output="screen">
+        <remap from="~input" to="points_concat"/>
+        <remap from="~output" to="points_raw" />
+        <rosparam>
+        min_x: -2.0
+        max_x: 3.0
+        min_y: -1.25
+        max_y: 1.25
+        min_z: -1.0
+        max_z: 3.0
+        negative: True
+        output_frame : base_link
+        input_frame : base_link
         </rosparam>
     </node>
 </launch>
