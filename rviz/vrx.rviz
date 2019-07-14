@@ -7,9 +7,11 @@ Panels:
         - /Global Options1
         - /Status1
         - /Grid1
-        - /Image1
-        - /PointCloud21
-      Splitter Ratio: 0.5
+        - /TF1/Frames1
+        - /PointCloud22
+        - /PointCloud22/Autocompute Value Bounds1
+        - /Marker1
+      Splitter Ratio: 0.5448460578918457
     Tree Height: 806
   - Class: rviz/Selection
     Name: Selection
@@ -223,12 +225,14 @@ Visualization Manager:
           Value: false
         earth:
           Value: false
+        field:
+          Value: true
         gps_wamv_link:
           Value: false
         imu_wamv_link:
           Value: false
         initial_pose:
-          Value: true
+          Value: false
         left_battery_link:
           Value: false
         left_camera_link:
@@ -320,317 +324,20 @@ Visualization Manager:
                 velodyne_front_post_arm_link:
                   velodyne_front_link:
                     {}
+            field:
+              {}
             initial_pose:
               {}
       Update Interval: 0
       Value: true
     - Class: rviz/MarkerArray
-      Enabled: true
+      Enabled: false
       Marker Topic: /pf_localization_node/marker
       Name: MarkerArray
       Namespaces:
-        marker0: true
-        marker1: true
-        marker10: true
-        marker100: true
-        marker101: true
-        marker102: true
-        marker103: true
-        marker104: true
-        marker105: true
-        marker106: true
-        marker107: true
-        marker108: true
-        marker109: true
-        marker11: true
-        marker110: true
-        marker111: true
-        marker112: true
-        marker113: true
-        marker114: true
-        marker115: true
-        marker116: true
-        marker117: true
-        marker118: true
-        marker119: true
-        marker12: true
-        marker120: true
-        marker121: true
-        marker122: true
-        marker123: true
-        marker124: true
-        marker125: true
-        marker126: true
-        marker127: true
-        marker128: true
-        marker129: true
-        marker13: true
-        marker130: true
-        marker131: true
-        marker132: true
-        marker133: true
-        marker134: true
-        marker135: true
-        marker136: true
-        marker137: true
-        marker138: true
-        marker139: true
-        marker14: true
-        marker140: true
-        marker141: true
-        marker142: true
-        marker143: true
-        marker144: true
-        marker145: true
-        marker146: true
-        marker147: true
-        marker148: true
-        marker149: true
-        marker15: true
-        marker150: true
-        marker151: true
-        marker152: true
-        marker153: true
-        marker154: true
-        marker155: true
-        marker156: true
-        marker157: true
-        marker158: true
-        marker159: true
-        marker16: true
-        marker160: true
-        marker161: true
-        marker162: true
-        marker163: true
-        marker164: true
-        marker165: true
-        marker166: true
-        marker167: true
-        marker168: true
-        marker169: true
-        marker17: true
-        marker170: true
-        marker171: true
-        marker172: true
-        marker173: true
-        marker174: true
-        marker175: true
-        marker176: true
-        marker177: true
-        marker178: true
-        marker179: true
-        marker18: true
-        marker180: true
-        marker181: true
-        marker182: true
-        marker183: true
-        marker184: true
-        marker185: true
-        marker186: true
-        marker187: true
-        marker188: true
-        marker189: true
-        marker19: true
-        marker190: true
-        marker191: true
-        marker192: true
-        marker193: true
-        marker194: true
-        marker195: true
-        marker196: true
-        marker197: true
-        marker198: true
-        marker199: true
-        marker2: true
-        marker20: true
-        marker200: true
-        marker201: true
-        marker202: true
-        marker203: true
-        marker204: true
-        marker205: true
-        marker206: true
-        marker207: true
-        marker208: true
-        marker209: true
-        marker21: true
-        marker210: true
-        marker211: true
-        marker212: true
-        marker213: true
-        marker214: true
-        marker215: true
-        marker216: true
-        marker217: true
-        marker218: true
-        marker219: true
-        marker22: true
-        marker220: true
-        marker221: true
-        marker222: true
-        marker223: true
-        marker224: true
-        marker225: true
-        marker226: true
-        marker227: true
-        marker228: true
-        marker229: true
-        marker23: true
-        marker230: true
-        marker231: true
-        marker232: true
-        marker233: true
-        marker234: true
-        marker235: true
-        marker236: true
-        marker237: true
-        marker238: true
-        marker239: true
-        marker24: true
-        marker240: true
-        marker241: true
-        marker242: true
-        marker243: true
-        marker244: true
-        marker245: true
-        marker246: true
-        marker247: true
-        marker248: true
-        marker249: true
-        marker25: true
-        marker250: true
-        marker251: true
-        marker252: true
-        marker253: true
-        marker254: true
-        marker255: true
-        marker256: true
-        marker257: true
-        marker258: true
-        marker259: true
-        marker26: true
-        marker260: true
-        marker261: true
-        marker262: true
-        marker263: true
-        marker264: true
-        marker265: true
-        marker266: true
-        marker267: true
-        marker268: true
-        marker269: true
-        marker27: true
-        marker270: true
-        marker271: true
-        marker272: true
-        marker273: true
-        marker274: true
-        marker275: true
-        marker276: true
-        marker277: true
-        marker278: true
-        marker279: true
-        marker28: true
-        marker280: true
-        marker281: true
-        marker282: true
-        marker283: true
-        marker284: true
-        marker285: true
-        marker286: true
-        marker287: true
-        marker288: true
-        marker289: true
-        marker29: true
-        marker290: true
-        marker291: true
-        marker292: true
-        marker293: true
-        marker294: true
-        marker295: true
-        marker296: true
-        marker297: true
-        marker298: true
-        marker299: true
-        marker3: true
-        marker30: true
-        marker31: true
-        marker32: true
-        marker33: true
-        marker34: true
-        marker35: true
-        marker36: true
-        marker37: true
-        marker38: true
-        marker39: true
-        marker4: true
-        marker40: true
-        marker41: true
-        marker42: true
-        marker43: true
-        marker44: true
-        marker45: true
-        marker46: true
-        marker47: true
-        marker48: true
-        marker49: true
-        marker5: true
-        marker50: true
-        marker51: true
-        marker52: true
-        marker53: true
-        marker54: true
-        marker55: true
-        marker56: true
-        marker57: true
-        marker58: true
-        marker59: true
-        marker6: true
-        marker60: true
-        marker61: true
-        marker62: true
-        marker63: true
-        marker64: true
-        marker65: true
-        marker66: true
-        marker67: true
-        marker68: true
-        marker69: true
-        marker7: true
-        marker70: true
-        marker71: true
-        marker72: true
-        marker73: true
-        marker74: true
-        marker75: true
-        marker76: true
-        marker77: true
-        marker78: true
-        marker79: true
-        marker8: true
-        marker80: true
-        marker81: true
-        marker82: true
-        marker83: true
-        marker84: true
-        marker85: true
-        marker86: true
-        marker87: true
-        marker88: true
-        marker89: true
-        marker9: true
-        marker90: true
-        marker91: true
-        marker92: true
-        marker93: true
-        marker94: true
-        marker95: true
-        marker96: true
-        marker97: true
-        marker98: true
-        marker99: true
+        {}
       Queue Size: 100
-      Value: true
+      Value: false
     - Alpha: 1
       Axes Length: 1
       Axes Radius: 0.10000000149011612
@@ -683,7 +390,78 @@ Visualization Manager:
       Transport Hint: raw
       Unreliable: false
       Value: false
+    - Class: jsk_rviz_plugin/OverlayImage
+      Enabled: false
+      Name: OverlayImage
+      Topic: /middle_camera/image_raw
+      Value: false
+      alpha: 0.800000011920929
+      height: 128
+      keep aspect ratio: true
+      left: 32
+      top: 192
+      width: 256
     - Alpha: 1
+      Autocompute Intensity Bounds: true
+      Autocompute Value Bounds:
+        Max Value: 1
+        Min Value: -0.9679050445556641
+        Value: false
+      Axis: Z
+      Channel Name: intensity
+      Class: rviz/PointCloud2
+      Color: 255; 255; 255
+      Color Transformer: AxisColor
+      Decay Time: 0
+      Enabled: false
+      Invert Rainbow: false
+      Max Color: 255; 255; 255
+      Max Intensity: 0
+      Min Color: 0; 0; 0
+      Min Intensity: 0
+      Name: PointCloud2
+      Position Transformer: XYZ
+      Queue Size: 10
+      Selectable: true
+      Size (Pixels): 3
+      Size (m): 0.800000011920929
+      Style: Boxes
+      Topic: /pointcloud_processing/points_object
+      Unreliable: false
+      Use Fixed Frame: true
+      Use rainbow: true
+      Value: false
+    - Alpha: 0.30000001192092896
+      Autocompute Intensity Bounds: true
+      Autocompute Value Bounds:
+        Max Value: 0
+        Min Value: 0
+        Value: true
+      Axis: Z
+      Channel Name: intensity
+      Class: rviz/LaserScan
+      Color: 0; 255; 0
+      Color Transformer: FlatColor
+      Decay Time: 0
+      Enabled: false
+      Invert Rainbow: false
+      Max Color: 0; 255; 0
+      Max Intensity: 4096
+      Min Color: 0; 0; 0
+      Min Intensity: 0
+      Name: LaserScan
+      Position Transformer: XYZ
+      Queue Size: 10
+      Selectable: true
+      Size (Pixels): 3
+      Size (m): 1
+      Style: Spheres
+      Topic: /pointcloud_processing/scan
+      Unreliable: false
+      Use Fixed Frame: true
+      Use rainbow: true
+      Value: false
+    - Alpha: 0.800000011920929
       Autocompute Intensity Bounds: true
       Autocompute Value Bounds:
         Max Value: 1
@@ -705,30 +483,27 @@ Visualization Manager:
       Position Transformer: XYZ
       Queue Size: 10
       Selectable: true
-      Size (Pixels): 3
+      Size (Pixels): 2
       Size (m): 0.009999999776482582
       Style: Points
-      Topic: /points_raw
+      Topic: /pointcloud_processing/points_concat
       Unreliable: false
       Use Fixed Frame: true
       Use rainbow: true
       Value: true
-    - Class: jsk_rviz_plugin/OverlayImage
-      Enabled: false
-      Name: OverlayImage
-      Topic: /middle_camera/image_raw
-      Value: false
-      alpha: 0.800000011920929
-      height: 128
-      keep aspect ratio: true
-      left: 32
-      top: 192
-      width: 256
+    - Class: rviz/Marker
+      Enabled: true
+      Marker Topic: /pointcloud_processing/crop_hull_filter/marker
+      Name: Marker
+      Namespaces:
+        {}
+      Queue Size: 100
+      Value: true
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
     Default Light: true
-    Fixed Frame: initial_pose
+    Fixed Frame: field
     Frame Rate: 30
   Name: root
   Tools:
@@ -752,25 +527,25 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 74.06937408447266
+      Distance: 75.16459655761719
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
       Focal Point:
-        X: 0
-        Y: 0
-        Z: 0
+        X: 7.905219554901123
+        Y: -10.370814323425293
+        Z: 4.510347843170166
       Focal Shape Fixed Size: false
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.5003980994224548
+      Pitch: 0.6603986620903015
       Target Frame: base_link
       Value: Orbit (rviz)
-      Yaw: 3.130445718765259
+      Yaw: 3.1078052520751953
     Saved: ~
 Window Geometry:
   Displays:
@@ -780,7 +555,7 @@ Window Geometry:
   Hide Right Dock: true
   Image:
     collapsed: false
-  QMainWindow State: 000000ff00000000fd00000004000000000000015600000363fc0200000009fb0000001200530065006c0065006300740069006f006e00000001e10000009b0000005c00fffffffb0000001e0054006f006f006c002000500072006f007000650072007400690065007302000001ed000001df00000185000000a3fb000000120056006900650077007300200054006f006f02000001df000002110000018500000122fb000000200054006f006f006c002000500072006f0070006500720074006900650073003203000002880000011d000002210000017afb000000100044006900730070006c006100790073000000003d00000363000000c900fffffffb0000002000730065006c0065006300740069006f006e00200062007500660066006500720200000138000000aa0000023a00000294fb00000014005700690064006500530074006500720065006f02000000e6000000d2000003ee0000030bfb0000000c004b0069006e0065006300740200000186000001060000030c00000261fb0000000a0049006d00610067006500000002d8000000c80000001600ffffff000000010000010f00000363fc0200000003fb0000001e0054006f006f006c002000500072006f00700065007200740069006500730100000041000000780000000000000000fb0000000a00560069006500770073000000003d00000363000000a400fffffffb0000001200530065006c0065006300740069006f006e010000025a000000b200000000000000000000000200000490000000a9fc0100000001fb0000000a00560069006500770073030000004e00000080000002e100000197000000030000073d0000003efc0100000002fb0000000800540069006d006501000000000000073d000002eb00fffffffb0000000800540069006d006501000000000000045000000000000000000000073d0000036300000004000000040000000800000008fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
+  QMainWindow State: 000000ff00000000fd00000004000000000000019600000363fc0200000009fb0000001200530065006c0065006300740069006f006e00000001e10000009b0000005c00fffffffb0000001e0054006f006f006c002000500072006f007000650072007400690065007302000001ed000001df00000185000000a3fb000000120056006900650077007300200054006f006f02000001df000002110000018500000122fb000000200054006f006f006c002000500072006f0070006500720074006900650073003203000002880000011d000002210000017afb000000100044006900730070006c006100790073000000003d00000363000000c900fffffffb0000002000730065006c0065006300740069006f006e00200062007500660066006500720200000138000000aa0000023a00000294fb00000014005700690064006500530074006500720065006f02000000e6000000d2000003ee0000030bfb0000000c004b0069006e0065006300740200000186000001060000030c00000261fb0000000a0049006d00610067006500000002d8000000c80000001600ffffff000000010000010f00000363fc0200000003fb0000001e0054006f006f006c002000500072006f00700065007200740069006500730100000041000000780000000000000000fb0000000a00560069006500770073000000003d00000363000000a400fffffffb0000001200530065006c0065006300740069006f006e010000025a000000b200000000000000000000000200000490000000a9fc0100000001fb0000000a00560069006500770073030000004e00000080000002e100000197000000030000073d0000003efc0100000002fb0000000800540069006d006501000000000000073d000002eb00fffffffb0000000800540069006d006501000000000000045000000000000000000000073d0000036300000004000000040000000800000008fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
   Selection:
     collapsed: false
   Time:

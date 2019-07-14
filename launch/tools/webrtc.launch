@@ -15,7 +15,7 @@
     </node>
 
     <node pkg="webrtc_ros" type="webrtc_ros_server_node" name="webrtc_ros_server_node" output="log" 
-        respawn="false" respawn_delay="0" ns="/middle_right_camera" args="ros_image:=/middle_right_camera/image_raw">
+        respawn="false" respawn_delay="0" ns="/front_middle_camera" args="ros_image:=/front_middle_camera/image_raw">
         <param name="port" value="8082"/>
         <param name="image_transport" value="$(arg image_transport)"/>
     </node>
