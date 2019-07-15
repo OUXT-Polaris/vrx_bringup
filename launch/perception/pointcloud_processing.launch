@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <launch>
     <arg name="manager_name" default="pcl_manager"/>
-    <arg name="manager_threads" default="4" />
+    <arg name="manager_threads" default="16" />
 
     <node pkg="nodelet" type="nodelet" name="$(arg manager_name)" args="manager" output="screen">
         <param name="num_worker_threads" value="$(arg manager_threads)" />
@@ -23,16 +23,19 @@
         <remap from="~input" to="points_object"/>
         <remap from="~output" to="clusters" />
         <rosparam>
-            tolerance : 1.0
+            tolerance : 60.0
             label_tracking_tolerance : 2.0
-            max_size : 50
+            max_size : 30
             min_size : 1
         </rosparam>
     </node>
 
     <node name="cluster_indices_decomposer" pkg="nodelet" type="nodelet" args="load jsk_pcl/ClusterPointIndicesDecomposer $(arg manager_name)">
-        <remap from="~input" to="points_raw"/>
+        <remap from="~input" to="points_object"/>
         <remap from="~target" to="clusters"/>
+        <rosparam>
+            queue_size: 10
+        </rosparam>
     </node>
 
     <node name="crop_hull_filter" pkg="nodelet" type="nodelet" args="load pcl/CropHullFilter $(arg manager_name)">
@@ -40,6 +43,7 @@
         <remap from="~output" to="points_object"/>
         <rosparam file="$(find vrx_bringup)/config/coast_line0_crop.yaml" command="load"/>
         <param name="crop_outside" value="false"/>
+        <param name="output_frame_id" value="base_link"/>
         <param name="marker_line_width" value="1.0"/>
         <param name="marker_color_r" value="0.0"/>
         <param name="marker_color_g" value="1.0"/>
