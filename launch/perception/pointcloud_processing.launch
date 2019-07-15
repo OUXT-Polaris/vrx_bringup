@@ -20,7 +20,7 @@
     </node>
 
     <node pkg="nodelet" type="nodelet" name="euclidean_cluster_extraction" args="load jsk_pcl/EuclideanClustering $(arg manager_name)" output="screen">
-        <remap from="~input" to="points_raw"/>
+        <remap from="~input" to="points_object"/>
         <remap from="~output" to="clusters" />
         <rosparam>
             tolerance : 1.0
@@ -34,34 +34,18 @@
         <remap from="~input" to="points_raw"/>
         <remap from="~target" to="clusters"/>
     </node>
-<!--
-    <node pkg="nodelet" type="nodelet" name="euclidean_cluster_extraction" args="load pcl/EuclideanClusterExtraction $(arg manager_name)" output="screen">
-        <remap from="~input" to="points_raw"/>
-        <remap from="~output" to="points_cluster" />
-        <rosparam>
-            cluster_tolerance : 80.0
-            spatial_locator : 0
-            publish_indices : false
-            min_pts_per_cluster : 1
-            max_pts_per_cluster : 30
-        </rosparam>
-    </node>
-
-    <node pkg="nodelet" type="nodelet" name="cluster_bbox_estimator" args="load pcl/ClusterBboxEstimator $(arg manager_name)" output="screen">
-    </node>
-
-    <node pkg="nodelet" type="nodelet" name="coast_line_removal" args="load pcl/CoastLineRemoval $(arg manager_name)" output="screen">
-        <remap from="~points_input" to="points_raw"/>
-        <remap from="~scan_input" to="scan"/>
-    </node>
 
     <node name="crop_hull_filter" pkg="nodelet" type="nodelet" args="load pcl/CropHullFilter $(arg manager_name)">
         <remap from="~input" to="points_raw"/>
         <remap from="~output" to="points_object"/>
         <rosparam file="$(find vrx_bringup)/config/coast_line0_crop.yaml" command="load"/>
         <param name="crop_outside" value="false"/>
+        <param name="marker_line_width" value="1.0"/>
+        <param name="marker_color_r" value="0.0"/>
+        <param name="marker_color_g" value="1.0"/>
+        <param name="marker_color_b" value="0.0"/>
+        <param name="marker_color_a" value="0.8"/>
     </node>
--->
 
     <node pkg="nodelet" type="nodelet" name="pointcloud_to_laserscan" args="load pointcloud_to_laserscan/pointcloud_to_laserscan_nodelet $(arg manager_name)" output="screen">
         <remap from="cloud_in" to="points_raw"/>
