@@ -2,16 +2,28 @@
 <launch>
     <arg name="manager_name" default="nodelet_manager" />
     <arg name="manager_threads" default="4" />
-    <arg name="image" default="image_raw" doc="The image topic. Should be remapped to the name of the real image topic." />
+    <arg name="image_topic" default="image_raw" doc="The image topic. Should be remapped to the name of the real image topic." />
+    <arg name="camera_info_topic" default="camera_info"/>
+    <arg name="bbox_topic" default="bboxs"/>
 
     <node pkg="nodelet" type="nodelet" name="$(arg manager_name)" args="manager" output="screen">
         <param name="num_worker_threads" value="$(arg manager_threads)" />
     </node>
 
+<!--
+    <node name="bounding_box_to_rect" pkg="nodelet" type="nodelet" args="load jsk_perception/BoundingBoxToRect $(arg manager_name)">
+        <remap from="~input" to="$(arg bbox_topic)"/>
+        <remap from="~input/info" to="$(arg camera_info_topic)"/>
+        <rosparam>
+            queue_size: 10
+            approximate_sync: true
+        </rosparam>
+    </node>
+
     <include file="$(find vrx_bringup)/launch/perception/hsv_filter.launch">
         <arg name="filter_name" value="red_filter"/>
         <arg name="manager_name" value="$(arg manager_name)"/>
-        <arg name="image" value="$(arg image)"/>
+        <arg name="image" value="$(arg image_topic)"/>
         <arg name="v_limit_min" value="100"/>
         <arg name="h_limit_max" value="18"/>
         <arg name="h_limit_min" value="335"/>
@@ -20,10 +32,11 @@
     <include file="$(find vrx_bringup)/launch/perception/hsv_filter.launch">
         <arg name="filter_name" value="green_filter"/>
         <arg name="manager_name" value="$(arg manager_name)"/>
-        <arg name="image" value="$(arg image)"/>
+        <arg name="image" value="$(arg image_topic)"/>
         <arg name="v_limit_max" value="255"/>
         <arg name="v_limit_min" value="100"/>
         <arg name="h_limit_max" value="160"/>
         <arg name="h_limit_min" value="75"/>
     </include>
+-->
 </launch>

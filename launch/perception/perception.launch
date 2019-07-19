@@ -1,5 +1,7 @@
 <?xml version="1.0"?>
 <launch>
+    <arg name="bbox_topic" default="/pointcloud_processing/cluster_indices_decomposer/boxes"/>
+
     <!-- Localization -->
     <include file="$(find vrx_bringup)/launch/perception/localization.launch" />
 
@@ -8,16 +10,31 @@
         <include file="$(find vrx_bringup)/launch/perception/pointcloud_processing.launch" />
     </group>
 
+    <!-- Costmap Calculation -->
+    <include file="$(find robotx_costmap_calculator)/launch/robotx_costmap_calculator.launch">
+        <arg name="output_topic" value="grid_map"/>
+        <arg name="points_raw_topic" value="/pointcloud_processing/points_raw"/>
+    </include>
+
     <!-- Image Processing -->
-    <group ns="front_left_camera">
-        <include file="$(find vrx_bringup)/launch/perception/image_processing.launch" />
+    <group ns="left_camera">
+        <include file="$(find vrx_bringup)/launch/perception/image_processing.launch">
+            <arg name="camera_info_topic" default="camera_info"/>
+            <arg name="bbox_topic" default="$(arg bbox_topic)"/>
+        </include>
     </group>
 
-    <group ns="front_right_camera">
-        <include file="$(find vrx_bringup)/launch/perception/image_processing.launch" />
+    <group ns="right_camera">
+        <include file="$(find vrx_bringup)/launch/perception/image_processing.launch">
+            <arg name="camera_info_topic" default="camera_info"/>
+            <arg name="bbox_topic" default="$(arg bbox_topic)"/>
+        </include>
     </group>
 
-    <group ns="front_middle_camera">
-        <include file="$(find vrx_bringup)/launch/perception/image_processing.launch" />
+    <group ns="middle_camera">
+        <include file="$(find vrx_bringup)/launch/perception/image_processing.launch">
+            <arg name="camera_info_topic" default="camera_info"/>
+            <arg name="bbox_topic" default="$(arg bbox_topic)"/>
+        </include>
     </group>
 </launch>

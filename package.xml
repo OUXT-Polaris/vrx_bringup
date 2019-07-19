@@ -31,6 +31,8 @@
   <exec_depend>webrtc_ros</exec_depend>
   <exec_depend>opencv_apps</exec_depend>
   <exec_depend>jsk_pcl_ros</exec_depend>
+  <exec_depend>jsk_perception</exec_depend>
+  <exec_depend>robotx_costmap_calculator</exec_depend>
   <!-- The export tag contains other, unspecified, tags -->
   <export>
     <!-- Other tools can request additional information be placed here -->
