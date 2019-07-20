@@ -1,7 +1,7 @@
 frame_id : "field"
 points:
   point0:
-    x: 100.0
+    x: 80.0
     y: 60.0
   point1:
     x: 120.0
@@ -11,10 +11,13 @@ points:
     y: 30.0
   point3:
     x: 100.0
-    y: 0.0
+    y: -10.0
   point4:
     x: -100.0
     y: -120.0
   point5:
     x: -100.0
     y: -60.0
+  point6:
+    x: 5.0
+    y: -5.0
