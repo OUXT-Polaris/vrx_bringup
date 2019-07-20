@@ -10,16 +10,15 @@
         <param name="num_worker_threads" value="$(arg manager_threads)" />
     </node>
 
-<!--
     <node name="bounding_box_to_rect" pkg="nodelet" type="nodelet" args="load jsk_perception/BoundingBoxToRect $(arg manager_name)">
         <remap from="~input" to="$(arg bbox_topic)"/>
         <remap from="~input/info" to="$(arg camera_info_topic)"/>
         <rosparam>
             queue_size: 10
-            approximate_sync: true
+            approximate_sync: false
         </rosparam>
     </node>
-
+<!--
     <include file="$(find vrx_bringup)/launch/perception/hsv_filter.launch">
         <arg name="filter_name" value="red_filter"/>
         <arg name="manager_name" value="$(arg manager_name)"/>
