@@ -5,6 +5,9 @@
     <arg name="image_topic" default="image_raw" doc="The image topic. Should be remapped to the name of the real image topic." />
     <arg name="camera_info_topic" default="camera_info"/>
     <arg name="bbox_topic" default="bboxs"/>
+    <arg name="use_tiny_yolo" default="true"/>
+    <arg name="camera_id" default="camera"/>
+    <arg name="publish_labeled_image" default="false"/>
 
     <node pkg="nodelet" type="nodelet" name="$(arg manager_name)" args="manager" output="screen">
         <param name="num_worker_threads" value="$(arg manager_threads)" />
@@ -18,6 +21,21 @@
             approximate_sync: false
         </rosparam>
     </node>
+
+    <group if="$(arg use_tiny_yolo)">
+        <include file="$(find vision_darknet_detect)/launch/vision_tiny_yolo3_detect_vrx.launch">
+            <arg name="image_src" default="$(arg image_topic)"/>
+            <arg name="publish_labeled_image" default="$(arg publish_labeled_image)"/>
+        </include>
+    </group>
+
+    <group unless="$(arg use_tiny_yolo)">
+        <include file="$(find vision_darknet_detect)/launch/vision_yolo3_detect_vrx.launch">
+            <arg name="image_src" default="$(arg image_topic)"/>
+            <arg name="publish_labeled_image" default="$(arg publish_labeled_image)"/>
+        </include>
+    </group>
+
 <!--
     <include file="$(find vrx_bringup)/launch/perception/hsv_filter.launch">
         <arg name="filter_name" value="red_filter"/>
