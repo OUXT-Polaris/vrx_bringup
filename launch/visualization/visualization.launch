@@ -1,5 +1,31 @@
 <?xml version="1.0"?>
 <launch>
+    <arg name="vision_info_topic" default="vision_info_server_node/vision_info"/>
+    <arg name="left_camera_prefix" default="left_camera"/>
+    <arg name="middle_camera_prefix" default="middle_camera"/>
+    <arg name="right_camera_prefix" default="right_camera"/>
+    
     <node pkg="rviz" type="rviz" name="rviz" output="screen" respawn="true" respawn_delay="0" args="-d $(find vrx_bringup)/rviz/vrx.rviz">
     </node>
+
+    <include file="$(find vision_msgs_visualization)/launch/visualization_2d.launch">
+        <arg name="node_name" default="$(arg middle_camera_prefix)_detection_visuzlizer_node"/>
+        <arg name="image_topic" default="/$(arg middle_camera_prefix)/image_raw"/>
+        <arg name="detection_topic" default="/$(arg middle_camera_prefix)/vision_darknet_detect/"/>
+        <arg name="vision_info_topic" default="$(arg vision_info_topic)"/>
+    </include>
+
+    <include file="$(find vision_msgs_visualization)/launch/visualization_2d.launch">
+        <arg name="node_name" default="$(arg left_camera_prefix)_detection_visuzlizer_node"/>
+        <arg name="image_topic" default="/$(arg left_camera_prefix)/image_raw"/>
+        <arg name="detection_topic" default="/$(arg left_camera_prefix)/vision_darknet_detect/"/>
+        <arg name="vision_info_topic" default="$(arg vision_info_topic)"/>
+    </include>
+
+    <include file="$(find vision_msgs_visualization)/launch/visualization_2d.launch">
+        <arg name="node_name" default="$(arg right_camera_prefix)_detection_visuzlizer_node"/>
+        <arg name="image_topic" default="/$(arg right_camera_prefix)/image_raw"/>
+        <arg name="detection_topic" default="/$(arg right_camera_prefix)/vision_darknet_detect/"/>
+        <arg name="vision_info_topic" default="$(arg vision_info_topic)"/>
+    </include>
 </launch>
