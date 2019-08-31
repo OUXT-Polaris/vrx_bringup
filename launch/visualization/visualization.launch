@@ -11,21 +11,21 @@
     <include file="$(find vision_msgs_visualization)/launch/visualization_2d.launch">
         <arg name="node_name" default="$(arg middle_camera_prefix)_detection_visuzlizer_node"/>
         <arg name="image_topic" default="/$(arg middle_camera_prefix)/image_raw"/>
-        <arg name="detection_topic" default="/$(arg middle_camera_prefix)/vision_darknet_detect/"/>
+        <arg name="detection_topic" default="/$(arg middle_camera_prefix)/vision_darknet_detect/detection"/>
         <arg name="vision_info_topic" default="$(arg vision_info_topic)"/>
     </include>
 
     <include file="$(find vision_msgs_visualization)/launch/visualization_2d.launch">
         <arg name="node_name" default="$(arg left_camera_prefix)_detection_visuzlizer_node"/>
         <arg name="image_topic" default="/$(arg left_camera_prefix)/image_raw"/>
-        <arg name="detection_topic" default="/$(arg left_camera_prefix)/vision_darknet_detect/"/>
+        <arg name="detection_topic" default="/$(arg left_camera_prefix)/vision_darknet_detect/detection"/>
         <arg name="vision_info_topic" default="$(arg vision_info_topic)"/>
     </include>
 
     <include file="$(find vision_msgs_visualization)/launch/visualization_2d.launch">
         <arg name="node_name" default="$(arg right_camera_prefix)_detection_visuzlizer_node"/>
         <arg name="image_topic" default="/$(arg right_camera_prefix)/image_raw"/>
-        <arg name="detection_topic" default="/$(arg right_camera_prefix)/vision_darknet_detect/"/>
+        <arg name="detection_topic" default="/$(arg right_camera_prefix)/vision_darknet_detect/detection"/>
         <arg name="vision_info_topic" default="$(arg vision_info_topic)"/>
     </include>
 </launch>

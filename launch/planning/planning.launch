@@ -20,4 +20,9 @@
 
     <include file="$(find waypoint_server)/launch/waypoint_server.launch">
     </include>
+
+    <include file="$(find linear_interpolation_planner)/launch/linear_interpolation_planner.launch">
+        <arg name="split_length" default="1.0"/>
+        <arg name="input_topic" default="/waypoint_server_node/target_waypoint"/>
+    </include>
 </launch>
