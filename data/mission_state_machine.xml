@@ -1,6 +1,7 @@
 <state_machine>
     <callback tag="WaypointServer::checkWaypointReached" when="always" states="traverse_navigation_channel"/>
     <callback tag="RobotXJoyControl::engage" when="always" states="waiting"/>
+    <callback tag="RobotxTaskPlanner::executeFirstTask" when="always" states="go"/>
 
     <init_state name="waiting"/>
 

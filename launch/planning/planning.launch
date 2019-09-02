@@ -1,5 +1,7 @@
 <?xml version="1.0"?>
 <launch>
+    <arg name="current_pose_topic" default="/pf_localization_node/current_pose"/>
+
     <include file="$(find rostate_machine)/launch/rostate_machine.launch">
         <arg name="xml_filepath" value="$(find vrx_bringup)/data/navigation_state_machine.xml"/>
         <arg name="dot_filepath" value="$(find vrx_bringup)/data/navigation_state_machine.dot"/>
@@ -19,6 +21,10 @@
     </include>
 
     <include file="$(find waypoint_server)/launch/waypoint_server.launch">
+        <arg name="current_pose_topic" default="$(arg current_pose_topic)"/>
+    </include>
+
+    <include file="$(find robotx_task_planner)/launch/robotx_task_planner.launch">
     </include>
 
     <include file="$(find linear_interpolation_planner)/launch/linear_interpolation_planner.launch">
