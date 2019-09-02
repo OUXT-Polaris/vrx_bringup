@@ -2,6 +2,7 @@
     <callback tag="ControlCommandSelector::publishControlCommandAsCurrentCommand" when="always" states="autonomous"/>
     <callback tag="ControlCommandSelector::publishManualCommandAsCurrentCommand" when="always" states="remote_operated"/>
     <callback tag="ControlCommandSelector::publishManualCommandAsCurrentCommand" when="always" states="system_bringup,emergency"/>
+    <callback tag="RobotXJoyControl::systemBringup" when="always" states="remote_operated"/>
 
     <init_state name="remote_operated"/>
 

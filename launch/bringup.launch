@@ -19,5 +19,5 @@
     <include file="$(find vrx_bringup)/launch/visualization/visualization.launch" />
 
     <!-- Tools -->
-    <include file="$(find vrx_bringup)/launch/tools/tools.launch" />
+    <!--<include file="$(find vrx_bringup)/launch/tools/tools.launch" />-->
 </launch>

@@ -1,0 +1,29 @@
+!!python/object/new:dynamic_reconfigure.encoding.Config
+dictitems:
+  groups: !!python/object/new:dynamic_reconfigure.encoding.Config
+    dictitems:
+      groups: !!python/object/new:dynamic_reconfigure.encoding.Config
+        state: []
+      id: 0
+      k_lateral: 0.2
+      k_longitudinal: 0.3
+      k_pitch: 0.0
+      k_roll: 0.0
+      k_vertical: 0.2
+      k_yaw: 0.0
+      name: Default
+      parameters: !!python/object/new:dynamic_reconfigure.encoding.Config
+        state: []
+      parent: 0
+      state: true
+      type: ''
+      use_twist_stamped: true
+    state: []
+  k_lateral: 0.2
+  k_longitudinal: 0.3
+  k_pitch: 0.0
+  k_roll: 0.0
+  k_vertical: 0.2
+  k_yaw: 0.0
+  use_twist_stamped: true
+state: []

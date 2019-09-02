@@ -3,17 +3,17 @@
     <arg name="control_command_topic" default="control_command"/>
     <arg name="manual_command_topic" default="manual_command"/>
     <arg name="current_command_topic" default="current_command"/>
-    <arg name="current_twist_topic" default="current_twist"/>
+    <arg name="current_twist_topic" default="/pf_localization_node/current_twist/smoothed"/>
     <arg name="target_twist_topic" default="target_twist"/>
     <arg name="use_gazebo" default="true"/>
     <arg name="use_hardware" default="false"/>
     <arg name="output_rate" default="30.0"/>
     <arg name="use_dualshock4" default="true"/>
 
-    <include file="$(find vrx_control)/launch/speed_controller.launch">
+    <include file="$(find velocity_controller)/launch/velocity_controller.launch">
         <arg name="control_command_topic" value="$(arg control_command_topic)"/>
-        <arg name="current_twist_topic" value="$(arg current_twist_topic)"/>
-        <arg name="target_twist_topic" value="$(arg target_twist_topic)"/>
+        <arg name="current_velocity_topic" value="$(arg current_twist_topic)"/>
+        <arg name="target_velocity_topic" value="$(arg target_twist_topic)"/>
     </include>
 
     <include file="$(find control_command_selector)/launch/control_command_selector.launch">

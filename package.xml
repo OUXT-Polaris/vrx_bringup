@@ -11,13 +11,13 @@
   <buildtool_depend>catkin</buildtool_depend>
   <build_depend>joint_state_publisher</build_depend>
   <build_depend>robot_state_publisher</build_depend>
-  <build_depend>vrx_control</build_depend>
+  <build_depend>velocity_controller</build_depend>
   <build_export_depend>joint_state_publisher</build_export_depend>
   <build_export_depend>robot_state_publisher</build_export_depend>
-  <build_export_depend>vrx_control</build_export_depend>
+  <build_export_depend>velocity_controller</build_export_depend>
   <exec_depend>joint_state_publisher</exec_depend>
   <exec_depend>robot_state_publisher</exec_depend>
-  <exec_depend>vrx_control</exec_depend>
+  <exec_depend>velocity_controller</exec_depend>
   <exec_depend>rostate_machine</exec_depend>
   <exec_depend>pf_localization</exec_depend>
   <exec_depend>pcl_ros</exec_depend>

@@ -25,4 +25,10 @@
         <arg name="split_length" default="1.0"/>
         <arg name="input_topic" default="/waypoint_server_node/target_waypoint"/>
     </include>
+
+    <include file="$(find dwa_planner)/launch/dwa_planner.launch">
+        <arg name="path_topic" default="/linear_interpolation_planner_node/path"/>
+        <arg name="twist_stamped_topic" default="/pf_localization_node/current_twist/smoothed"/>
+        <arg name="twist_cmd_topic" default="/target_twist"/>
+    </include>
 </launch>
