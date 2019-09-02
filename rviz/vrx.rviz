@@ -7,9 +7,9 @@ Panels:
         - /Grid1/Line Style1
         - /TF1/Frames1
         - /TF1/Tree1
-        - /TF1/Tree1/earth1
         - /PointsCluster1/Autocompute Value Bounds1
         - /Camera1/Visibility1
+        - /NextWaypoint1
       Splitter Ratio: 0.5448460578918457
     Tree Height: 461
   - Class: rviz/Selection
@@ -455,6 +455,7 @@ Visualization Manager:
         EffectiveSampleSize: false
         Grid: true
         Image: true
+        NextWaypoint: true
         PointCloud2: true
         PointsCluster: true
         PointsRaw: true
@@ -465,8 +466,8 @@ Visualization Manager:
     - Alpha: 1
       Autocompute Intensity Bounds: true
       Autocompute Value Bounds:
-        Max Value: 5.141211032867432
-        Min Value: -0.9515321254730225
+        Max Value: 5.329544544219971
+        Min Value: -0.9667830467224121
         Value: true
       Axis: Z
       Channel Name: intensity
@@ -525,6 +526,14 @@ Visualization Manager:
       Transport Hint: raw
       Unreliable: false
       Value: false
+    - Class: rviz/MarkerArray
+      Enabled: true
+      Marker Topic: /waypoint_server_node/target_waypoint/marker
+      Name: NextWaypoint
+      Namespaces:
+        {}
+      Queue Size: 100
+      Value: true
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
