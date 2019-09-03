@@ -1,5 +1,5 @@
 <state_machine>
-    <callback tag="WaypointServer::loadNextWaypoint" when="always" states="station_keeping"/>
+    <callback tag="WaypointServer::loadNextWaypoint" when="on_exit" states="station_keeping"/>
 
     <init_state name="station_keeping"/>
 
