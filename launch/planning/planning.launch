@@ -37,5 +37,6 @@
         <arg name="twist_stamped_topic" default="/pf_localization_node/current_twist/smoothed"/>
         <arg name="current_pose_topic" default="/pf_localization_node/current_pose"/>
         <arg name="twist_cmd_topic" default="/target_twist"/>
+        <arg name="grid_map_topic" default="/robotx_costmap_calculator_node/grid_map"/>
     </include>
 </launch>

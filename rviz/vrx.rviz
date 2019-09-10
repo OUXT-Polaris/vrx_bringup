@@ -4,13 +4,15 @@ Panels:
     Name: Displays
     Property Tree Widget:
       Expanded:
+        - /Global Options1
         - /Grid1/Line Style1
         - /TF1/Frames1
         - /TF1/Tree1
         - /PointsCluster1/Autocompute Value Bounds1
         - /Camera1/Visibility1
+        - /RightCamera1
       Splitter Ratio: 0.5448460578918457
-    Tree Height: 419
+    Tree Height: 691
   - Class: rviz/Selection
     Name: Selection
   - Class: rviz/Tool Properties
@@ -455,19 +457,29 @@ Visualization Manager:
         GlobalWaypoint: true
         Grid: true
         Image: true
+        LeftCamera: true
+        LeftJoint: true
+        LeftThrust: true
+        LocalWaypoint: true
+        MiddleCamera: false
         NextWaypoint: true
         PointCloud2: true
         PointsCluster: true
         PointsRaw: true
+        RightCamera: true
+        RightJoint: true
+        RightThrust: true
         RobotModel: false
+        RobotStatus: true
         TF: false
+        TwistStamped: true
         Value: true
       Zoom Factor: 1
     - Alpha: 1
       Autocompute Intensity Bounds: true
       Autocompute Value Bounds:
-        Max Value: 4.795734882354736
-        Min Value: -0.07327830791473389
+        Max Value: 4.06629753112793
+        Min Value: -0.8887503147125244
         Value: true
       Axis: Z
       Channel Name: intensity
@@ -531,7 +543,8 @@ Visualization Manager:
       Marker Topic: /waypoint_server_node/target_waypoint/marker
       Name: NextWaypoint
       Namespaces:
-        {}
+        pose_marker: true
+        text_marker: true
       Queue Size: 100
       Value: true
     - Class: rviz/MarkerArray
@@ -539,9 +552,162 @@ Visualization Manager:
       Marker Topic: /linear_interpolation_planner_node/path/marker
       Name: GlobalWaypoint
       Namespaces:
-        {}
+        line_marker: true
+        pose_marker: true
+        text_marker: true
       Queue Size: 100
       Value: true
+    - Class: rviz/MarkerArray
+      Enabled: true
+      Marker Topic: /dwa_planner_node/marker
+      Name: LocalWaypoint
+      Namespaces:
+        path_line: true
+        robot_model: true
+        selected_path_line: true
+        selected_trajectory_marker: true
+      Queue Size: 100
+      Value: true
+    - Class: rviz/MarkerArray
+      Enabled: true
+      Marker Topic: /robotx_hardware_interface_node/marker
+      Name: RobotStatus
+      Namespaces:
+        left_thrust: true
+        right_thrust: true
+      Queue Size: 100
+      Value: true
+    - Class: jsk_rviz_plugin/PieChart
+      Enabled: false
+      Name: LeftThrust
+      Topic: /left_thrust_cmd
+      Value: false
+      auto color change: false
+      background color: 0; 0; 0
+      backround alpha: 0
+      foreground alpha: 0.699999988079071
+      foreground alpha 2: 0.4000000059604645
+      foreground color: 25; 255; 240
+      left: 128
+      max color: 255; 0; 0
+      max value: 1
+      min value: 0
+      show caption: true
+      size: 128
+      text size: 14
+      top: 600
+    - Class: jsk_rviz_plugin/PieChart
+      Enabled: false
+      Name: RightThrust
+      Topic: /left_thrust_cmd
+      Value: false
+      auto color change: false
+      background color: 0; 0; 0
+      backround alpha: 0
+      foreground alpha: 0.699999988079071
+      foreground alpha 2: 0.4000000059604645
+      foreground color: 25; 255; 240
+      left: 720
+      max color: 255; 0; 0
+      max value: 1
+      min value: 0
+      show caption: true
+      size: 128
+      text size: 14
+      top: 600
+    - Class: jsk_rviz_plugin/PieChart
+      Enabled: false
+      Name: LeftJoint
+      Topic: /left_thrust_angle
+      Value: false
+      auto color change: false
+      background color: 0; 0; 0
+      backround alpha: 0
+      foreground alpha: 0.699999988079071
+      foreground alpha 2: 0.4000000059604645
+      foreground color: 25; 255; 240
+      left: 128
+      max color: 255; 0; 0
+      max value: 1
+      min value: 0
+      show caption: true
+      size: 128
+      text size: 14
+      top: 400
+    - Class: jsk_rviz_plugin/PieChart
+      Enabled: false
+      Name: RightJoint
+      Topic: /right_thrust_angle
+      Value: false
+      auto color change: false
+      background color: 0; 0; 0
+      backround alpha: 0
+      foreground alpha: 0.699999988079071
+      foreground alpha 2: 0.4000000059604645
+      foreground color: 25; 255; 240
+      left: 720
+      max color: 255; 0; 0
+      max value: 1
+      min value: 0
+      show caption: true
+      size: 128
+      text size: 14
+      top: 400
+    - Class: jsk_rviz_plugin/TwistStamped
+      Enabled: true
+      Name: TwistStamped
+      Topic: /target_twist
+      Unreliable: false
+      Value: true
+      angular color: 255; 0; 0
+      angular scale: 1
+      linear color: 0; 255; 0
+      linear scale: 1
+    - Class: jsk_rviz_plugin/CameraInfo
+      Enabled: true
+      Image Topic: /middle_camera/image_raw/annotated
+      Name: MiddleCamera
+      Topic: /middle_camera/camera_info
+      Unreliable: false
+      Value: true
+      alpha: 0.30000001192092896
+      color: 115; 210; 22
+      edge color: 138; 226; 52
+      far clip: 5
+      not show side polygons: true
+      show edges: true
+      show polygons: true
+      use image: true
+    - Class: jsk_rviz_plugin/CameraInfo
+      Enabled: true
+      Image Topic: /left_camera/image_raw/annotated
+      Name: LeftCamera
+      Topic: /left_camera/camera_info
+      Unreliable: false
+      Value: true
+      alpha: 0.30000001192092896
+      color: 115; 210; 22
+      edge color: 138; 226; 52
+      far clip: 5
+      not show side polygons: true
+      show edges: true
+      show polygons: true
+      use image: true
+    - Class: jsk_rviz_plugin/CameraInfo
+      Enabled: true
+      Image Topic: /right_camera/image_raw/annotated
+      Name: RightCamera
+      Topic: /right_camera/camera_info
+      Unreliable: false
+      Value: true
+      alpha: 0.30000001192092896
+      color: 115; 210; 22
+      edge color: 138; 226; 52
+      far clip: 5
+      not show side polygons: true
+      show edges: true
+      show polygons: true
+      use image: true
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
@@ -570,7 +736,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 21.536678314208984
+      Distance: 18.82306480407715
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
@@ -585,22 +751,22 @@ Visualization Manager:
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.3703989088535309
+      Pitch: 0.6753997206687927
       Target Frame: base_link
       Value: Orbit (rviz)
-      Yaw: 5.39586877822876
+      Yaw: 3.6158790588378906
     Saved: ~
 Window Geometry:
   Camera:
     collapsed: false
   Displays:
     collapsed: false
-  Height: 1025
+  Height: 1385
   Hide Left Dock: false
   Hide Right Dock: true
   Image:
     collapsed: false
-  QMainWindow State: 000000ff00000000fd00000004000000000000033d00000363fc020000000cfb0000001200530065006c0065006300740069006f006e00000001e10000009b0000005c00fffffffb0000001e0054006f006f006c002000500072006f007000650072007400690065007302000001ed000001df00000185000000a3fb000000120056006900650077007300200054006f006f02000001df000002110000018500000122fb000000200054006f006f006c002000500072006f0070006500720074006900650073003203000002880000011d000002210000017afc0000003d00000227000000e60100001cfa000000000100000002fb000000320052006f00730074006100740065004d0061006300680069006e006500560069006500770065007200500061006e0065006c0100000000ffffffff000001cf00fffffffb000000100044006900730070006c00610079007301000000000000033d0000015600fffffffb0000002000730065006c0065006300740069006f006e00200062007500660066006500720200000138000000aa0000023a00000294fb00000014005700690064006500530074006500720065006f02000000e6000000d2000003ee0000030bfb0000000c004b0069006e0065006300740200000186000001060000030c00000261fb0000000a0049006d00610067006500000001f5000000c80000001600fffffffb0000000a0049006d00610067006500000002d8000000c80000000000000000fb0000000c00430061006d006500720061010000026a000001360000001600fffffffb0000000a0049006d006100670065010000026e000001320000000000000000000000010000010f00000363fc0200000003fb0000001e0054006f006f006c002000500072006f00700065007200740069006500730100000041000000780000000000000000fb0000000a00560069006500770073000000003d00000363000000a400fffffffb0000001200530065006c0065006300740069006f006e010000025a000000b200000000000000000000000200000490000000a9fc0100000001fb0000000a00560069006500770073030000004e00000080000002e100000197000000030000073d0000003efc0100000002fb0000000800540069006d006501000000000000073d000002eb00fffffffb0000000800540069006d00650100000000000004500000000000000000000003fa0000036300000004000000040000000800000008fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
+  QMainWindow State: 000000ff00000000fd00000004000000000000033d000004cbfc020000000cfb0000001200530065006c0065006300740069006f006e00000001e10000009b0000005c00fffffffb0000001e0054006f006f006c002000500072006f007000650072007400690065007302000001ed000001df00000185000000a3fb000000120056006900650077007300200054006f006f02000001df000002110000018500000122fb000000200054006f006f006c002000500072006f0070006500720074006900650073003203000002880000011d000002210000017afc0000003d0000030d000000e60100001cfa000000010100000002fb000000320052006f00730074006100740065004d0061006300680069006e006500560069006500770065007200500061006e0065006c0100000000ffffffff000001cf00fffffffb000000100044006900730070006c00610079007301000000000000033d0000015600fffffffb0000002000730065006c0065006300740069006f006e00200062007500660066006500720200000138000000aa0000023a00000294fb00000014005700690064006500530074006500720065006f02000000e6000000d2000003ee0000030bfb0000000c004b0069006e0065006300740200000186000001060000030c00000261fb0000000a0049006d00610067006500000001f5000000c80000001600fffffffb0000000a0049006d00610067006500000002d8000000c80000000000000000fb0000000c00430061006d0065007200610100000350000001b80000001600fffffffb0000000a0049006d006100670065010000026e000001320000000000000000000000010000010f00000363fc0200000003fb0000001e0054006f006f006c002000500072006f00700065007200740069006500730100000041000000780000000000000000fb0000000a00560069006500770073000000003d00000363000000a400fffffffb0000001200530065006c0065006300740069006f006e010000025a000000b200000000000000000000000200000490000000a9fc0100000001fb0000000a00560069006500770073030000004e00000080000002e1000001970000000300000d2d0000003efc0100000002fb0000000800540069006d0065010000000000000d2d000002eb00fffffffb0000000800540069006d00650100000000000004500000000000000000000009ea000004cb00000004000000040000000800000008fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
   RostateMachineViewerPanel:
     collapsed: false
   Selection:
@@ -611,6 +777,6 @@ Window Geometry:
     collapsed: false
   Views:
     collapsed: true
-  Width: 1853
+  Width: 3373
   X: 67
   Y: 27
