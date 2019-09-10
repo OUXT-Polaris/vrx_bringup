@@ -1,7 +1,7 @@
 <state_machine>
-    <callback tag="ControlCommandSelector::publishControlCommandAsCurrentCommand" when="always" states="autonomous"/>
-    <callback tag="ControlCommandSelector::publishManualCommandAsCurrentCommand" when="always" states="remote_operated"/>
-    <callback tag="ControlCommandSelector::publishManualCommandAsCurrentCommand" when="always" states="system_bringup,emergency"/>
+    <callback tag="ControlCommandSelector::publishControlCommandAsMotorCommand" when="always" states="autonomous"/>
+    <callback tag="ControlCommandSelector::publishManualCommandAsMotorCommand" when="always" states="remote_operated"/>
+    <callback tag="ControlCommandSelector::publishManualCommandAsMotorCommand" when="always" states="system_bringup,emergency"/>
     <callback tag="RobotXJoyControl::systemBringup" when="always" states="remote_operated"/>
     <callback tag="RobotXJoyControl::manualOverride" when="always" states="autonomous"/>
 
