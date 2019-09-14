@@ -1,21 +1,29 @@
 !!python/object/new:dynamic_reconfigure.encoding.Config
 dictitems:
-  acceralation_offset_x: 0.12
-  acceralation_offset_y: 0.0
-  acceralation_offset_z: 0.0
   groups: !!python/object/new:dynamic_reconfigure.encoding.Config
     dictitems:
-      acceralation_offset_x: 0.12
-      acceralation_offset_y: 0.0
-      acceralation_offset_z: 0.0
       groups: !!python/object/new:dynamic_reconfigure.encoding.Config
         state: []
       id: 0
+      k_lateral: 0.9
+      k_longitudinal: 0.8
+      k_pitch: 0.2
+      k_roll: 0.2
+      k_vertical: 0.3
+      k_yaw: 0.2
       name: Default
       parameters: !!python/object/new:dynamic_reconfigure.encoding.Config
         state: []
       parent: 0
       state: true
       type: ''
+      use_twist_stamped: true
     state: []
+  k_lateral: 0.9
+  k_longitudinal: 0.8
+  k_pitch: 0.2
+  k_roll: 0.2
+  k_vertical: 0.3
+  k_yaw: 0.2
+  use_twist_stamped: true
 state: []

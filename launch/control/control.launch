@@ -10,10 +10,10 @@
     <arg name="output_rate" default="30.0"/>
     <arg name="use_dualshock4" default="true"/>
 
-    <include file="$(find velocity_controller)/launch/velocity_controller.launch">
+    <include file="$(find robotx_control)/launch/diff_drive_controller.launch">
         <arg name="control_command_topic" value="$(arg control_command_topic)"/>
-        <arg name="current_velocity_topic" value="$(arg current_twist_topic)"/>
-        <arg name="target_velocity_topic" value="$(arg target_twist_topic)"/>
+        <arg name="current_twist_topic" value="$(arg current_twist_topic)"/>
+        <arg name="target_twist_topic" value="$(arg target_twist_topic)"/>
     </include>
 
     <include file="$(find control_command_selector)/launch/control_command_selector.launch">

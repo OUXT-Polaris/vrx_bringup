@@ -22,13 +22,17 @@
         <arg name="robot_frame" value="$(arg base_link_frame)"/>
     </include>
 
+    <node name="dynamic_reconfigur_imu_to_twist" pkg="dynamic_reconfigure" type="dynparam" 
+        args="load /imu_to_twist_node $(find vrx_bringup)/config/imu_to_twist_dynamic_reconfigure_params.yaml" output="screen" respawn="false">
+    </node>
+
     <include file="$(find velocity_smoother)/launch/velocity_smoother.launch">
         <arg name="input_topic" default="$(arg twist_topic)"/>
         <arg name="node_name" default="imu_to_twist_smoother"/>
     </include>
 
     <node name="dynamic_reconfigur_imu_to_twist_smoother" pkg="dynamic_reconfigure" type="dynparam" 
-        args="load /imu_to_twist_smoother $(find vrx_bringup)/config/imu_to_twist_dynamic_reconfigure_params.yaml" output="screen" respawn="false">
+        args="load /imu_to_twist_smoother $(find vrx_bringup)/config/imu_to_twist_smoother_dynamic_reconfigure_params.yaml" output="screen" respawn="false">
     </node>
 
     <include file="$(find twist_calculator)/launch/pose_to_twist.launch">
@@ -49,6 +53,8 @@
         <arg name="expansion_reset_ess_threashold" value="5"/>
         <arg name="sensor_reset_ess_threashold" value="3"/>
         <arg name="sensor_reset_radius" value="5.0"/>
+        <arg name="weight_position" value="0.5"/>
+        <arg name="weight_orientation" value="0.5"/>
     </include>
 
     <include file="$(find velocity_smoother)/launch/velocity_smoother.launch">
