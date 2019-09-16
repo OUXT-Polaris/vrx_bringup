@@ -4,22 +4,40 @@
     <arg name="manager_threads" default="4" />
     <arg name="image_topic" default="image_raw" doc="The image topic. Should be remapped to the name of the real image topic." />
     <arg name="camera_info_topic" default="camera_info"/>
-    <arg name="bbox_topic" default="bboxs"/>
     <arg name="use_tiny_yolo" default="true"/>
     <arg name="camera_id" default="camera"/>
     <arg name="publish_labeled_image" default="false"/>
+    <arg name="jsk_bbox_rects_topic" default="jsk/bboxs_rects"/>
+    <arg name="jsk_bbox_topic" default="jsk/bboxs"/>
+    <arg name="bbox_rects_topic" default="bboxs_rects"/>
+    <arg name="bbox_topic" default="bboxs"/>
+    <arg name="detection_topic" default="vision_darknet_detect/detection"/>
 
     <node pkg="nodelet" type="nodelet" name="$(arg manager_name)" args="manager" output="screen">
         <param name="num_worker_threads" value="$(arg manager_threads)" />
     </node>
 
     <node name="bounding_box_to_rect" pkg="nodelet" type="nodelet" args="load jsk_perception/BoundingBoxToRect $(arg manager_name)">
-        <remap from="~input" to="$(arg bbox_topic)"/>
+        <remap from="~input" to="$(arg jsk_bbox_topic)"/>
         <remap from="~input/info" to="$(arg camera_info_topic)"/>
+        <remap from="~output" to="$(arg jsk_bbox_rects_topic)"/>
         <rosparam>
             queue_size: 10
             approximate_sync: false
         </rosparam>
+    </node>
+
+    <node name="jsk_rect_to_vision_msgs_detection" pkg="nodelet" type="nodelet" args="load jsk_to_vision_msgs/JskToVisionMsgs $(arg manager_name)">
+        <remap from="~input/rect" to="$(arg jsk_bbox_rects_topic)"/>
+        <remap from="~input/bbox" to="$(arg jsk_bbox_topic)"/>
+        <remap from="~output/detection_2d" to="$(arg bbox_rects_topic)"/>
+        <remap from="~output/detection_3d" to="$(arg bbox_topic)"/>
+    </node>
+
+    <node name="cluster_image_fusion" pkg="nodelet" type="nodelet" args="load cluster_image_fusion/ClusterImageFusion $(arg manager_name)">
+        <remap from="~input/image_detection" to="$(arg detection_topic)"/>
+        <remap from="~input/cluster_rect" to="$(arg bbox_rects_topic)"/>
+        <remap from="~input/camera_info" to="$(arg camera_info_topic)"/>
     </node>
 
     <group if="$(arg use_tiny_yolo)">

@@ -211,128 +211,19 @@ Visualization Manager:
       Value: true
       Visual Enabled: true
     - Class: rviz/TF
-      Enabled: true
+      Enabled: false
       Frame Timeout: 15
       Frames:
         All Enabled: false
-        base_link:
-          Value: true
-        dummy_link:
-          Value: false
-        earth:
-          Value: false
-        field:
-          Value: true
-        gps_wamv_link:
-          Value: false
-        imu_wamv_link:
-          Value: false
-        initial_pose:
-          Value: false
-        left_battery_link:
-          Value: false
-        left_camera_link:
-          Value: false
-        left_camera_link_optical:
-          Value: false
-        left_camera_post_arm_link:
-          Value: false
-        left_camera_post_link:
-          Value: false
-        left_engine_link:
-          Value: false
-        left_propeller_link:
-          Value: false
-        map:
-          Value: false
-        middle_camera_link:
-          Value: false
-        middle_camera_link_optical:
-          Value: false
-        middle_camera_post_arm_link:
-          Value: false
-        middle_camera_post_link:
-          Value: false
-        right_battery_link:
-          Value: false
-        right_camera_link:
-          Value: false
-        right_camera_link_optical:
-          Value: false
-        right_camera_post_arm_link:
-          Value: false
-        right_camera_post_link:
-          Value: false
-        right_engine_link:
-          Value: false
-        right_propeller_link:
-          Value: false
-        velodyne_center_link:
-          Value: false
-        velodyne_center_post_arm_link:
-          Value: false
-        velodyne_center_post_link:
-          Value: false
-        velodyne_front_link:
-          Value: false
-        velodyne_front_post_arm_link:
-          Value: false
-        velodyne_front_post_link:
-          Value: false
       Marker Scale: 3
       Name: TF
       Show Arrows: true
       Show Axes: true
       Show Names: true
       Tree:
-        earth:
-          map:
-            base_link:
-              dummy_link:
-                {}
-              gps_wamv_link:
-                {}
-              imu_wamv_link:
-                {}
-              left_battery_link:
-                {}
-              left_camera_post_link:
-                left_camera_post_arm_link:
-                  left_camera_link:
-                    left_camera_link_optical:
-                      {}
-              left_engine_link:
-                left_propeller_link:
-                  {}
-              middle_camera_post_link:
-                middle_camera_post_arm_link:
-                  middle_camera_link:
-                    middle_camera_link_optical:
-                      {}
-              right_battery_link:
-                {}
-              right_camera_post_link:
-                right_camera_post_arm_link:
-                  right_camera_link:
-                    right_camera_link_optical:
-                      {}
-              right_engine_link:
-                right_propeller_link:
-                  {}
-              velodyne_center_post_link:
-                velodyne_center_post_arm_link:
-                  velodyne_center_link:
-                    {}
-              velodyne_front_post_link:
-                velodyne_front_post_arm_link:
-                  velodyne_front_link:
-                    {}
-            field:
-              {}
-            initial_pose:
-              {}
+        {}
       Update Interval: 0
-      Value: true
+      Value: false
     - Buffer length: 100
       Class: jsk_rviz_plugin/Plotter2D
       Enabled: false
@@ -478,8 +369,8 @@ Visualization Manager:
     - Alpha: 1
       Autocompute Intensity Bounds: true
       Autocompute Value Bounds:
-        Max Value: 5.865016937255859
-        Min Value: -0.24522030353546143
+        Max Value: 5.419490814208984
+        Min Value: -0.9672598838806152
         Value: true
       Axis: Z
       Channel Name: intensity
@@ -573,8 +464,7 @@ Visualization Manager:
       Marker Topic: /robotx_hardware_interface_node/marker
       Name: RobotStatus
       Namespaces:
-        left_thrust: true
-        right_thrust: true
+        {}
       Queue Size: 100
       Value: true
     - Class: jsk_rviz_plugin/PieChart
@@ -744,7 +634,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 17.9241886138916
+      Distance: 13.098079681396484
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
@@ -759,10 +649,10 @@ Visualization Manager:
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.520399808883667
+      Pitch: 0.5153998136520386
       Target Frame: base_link
       Value: Orbit (rviz)
-      Yaw: 4.715878963470459
+      Yaw: 4.705878734588623
     Saved: ~
 Window Geometry:
   Camera:

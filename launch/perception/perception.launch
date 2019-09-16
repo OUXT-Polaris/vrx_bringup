@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <launch>
-    <arg name="bbox_topic" default="/pointcloud_processing/cluster_indices_decomposer/boxes"/>
+    <arg name="jsk_bbox_topic" default="/pointcloud_processing/cluster_indices_decomposer/boxes"/>
 
     <!-- Info Server -->
     <include file="$(find vision_info_server)/launch/vision_info_server.launch">
@@ -19,13 +19,15 @@
     <include file="$(find robotx_costmap_calculator)/launch/robotx_costmap_calculator.launch">
         <arg name="output_topic" value="grid_map"/>
         <arg name="points_raw_topic" value="/pointcloud_processing/points_raw"/>
+        <arg name="resolution" default="2.0"/>
+        <arg name="num_grids" default="10"/>
     </include>
 
     <!-- Image Processing -->
     <group ns="left_camera">
         <include file="$(find vrx_bringup)/launch/perception/image_processing.launch">
-            <arg name="camera_info_topic" default="camera_info"/>
-            <arg name="bbox_topic" default="$(arg bbox_topic)"/>
+            <arg name="camera_info_topic" value="camera_info"/>
+            <arg name="jsk_bbox_topic" value="$(arg jsk_bbox_topic)"/>
             <arg name="image_topic" value="/left_camera/image_raw"/>
         </include>
     </group>
@@ -33,7 +35,7 @@
     <group ns="right_camera">
         <include file="$(find vrx_bringup)/launch/perception/image_processing.launch">
             <arg name="camera_info_topic" default="camera_info"/>
-            <arg name="bbox_topic" default="$(arg bbox_topic)"/>
+            <arg name="jsk_bbox_topic" default="$(arg jsk_bbox_topic)"/>
             <arg name="image_topic" value="/right_camera/image_raw"/>
         </include>
     </group>
@@ -41,7 +43,7 @@
     <group ns="middle_camera">
         <include file="$(find vrx_bringup)/launch/perception/image_processing.launch">
             <arg name="camera_info_topic" default="camera_info"/>
-            <arg name="bbox_topic" default="$(arg bbox_topic)"/>
+            <arg name="jsk_bbox_topic" default="$(arg jsk_bbox_topic)"/>
             <arg name="image_topic" value="/middle_camera/image_raw"/>
         </include>
     </group>
