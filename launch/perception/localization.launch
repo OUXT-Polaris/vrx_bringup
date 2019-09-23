@@ -46,7 +46,7 @@
         <arg name="estimate_3d_pose" value="false"/>
         <arg name="update_rate" value="$(arg update_rate)"/>
         <arg name="num_particles" value="$(arg num_particles)"/>
-        <arg name="twist_topic" value="$(arg twist_topic)"/>
+        <arg name="twist_topic" value="$(arg twist_topic)/smoothed"/>
         <arg name="pose_topic" value="$(arg pose_topic)"/>
         <arg name="publish_marker" value="true"/>
         <arg name="respawn" value="true"/>
@@ -55,11 +55,17 @@
         <arg name="sensor_reset_radius" value="5.0"/>
         <arg name="weight_position" value="0.5"/>
         <arg name="weight_orientation" value="0.5"/>
+        <arg name="publish_frame" value="false"/>
     </include>
 
     <include file="$(find velocity_smoother)/launch/velocity_smoother.launch">
-        <arg name="input_topic" default="/pf_localization_node/current_twist"/>
-        <arg name="node_name" default="pf_localization_smoother"/>
+        <arg name="input_topic" value="/pf_localization_node/current_twist"/>
+        <arg name="node_name" value="pf_localization_smoother"/>
+    </include>
+
+    <include file="$(find odom_frame_publisher)/launch/odom_frame_publisher.launch">
+        <arg name="current_twist_topic" value="$(arg twist_topic)/smoothed"/>
+        <arg name="current_pose_topic" value="/pf_localization_node/current_pose"/>
     </include>
 
     <!-- Geographic Conversion -->

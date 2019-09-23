@@ -28,4 +28,22 @@
         <arg name="detection_topic" default="/$(arg right_camera_prefix)/vision_darknet_detect/detection"/>
         <arg name="vision_info_topic" default="$(arg vision_info_topic)"/>
     </include>
+
+    <node pkg="vision_msgs_visualization" type="detection_3d_visualizer_node" name="cluster_image_fusion_visualization_node" output="log" respawn="true" respawn_delay="0">
+            <param name="detection_topic" value="/pointcloud_processing/detection_merger/detection"/>
+            <param name="vision_info_topic" value="$(arg vision_info_topic)"/>
+            <param name="publish_model_marker" value="true"/>
+            <param name="model_path/surmark950400" value="package://vrx_gazebo/models/surmark950400/mesh/surmark950400.dae"/>
+            <param name="surmark950400/color/override" value="true"/>
+            <param name="surmark950400/color/r" value="0.2"/>
+            <param name="surmark950400/color/g" value="0.8"/>
+            <param name="surmark950400/color/b" value="0.2"/>
+            <param name="surmark950400/color/a" value="0.8"/>
+            <param name="model_path/surmark950410" value="package://vrx_gazebo/models/surmark950410/mesh/surmark950410.dae"/>
+            <param name="surmark950410/color/override" value="true"/>
+            <param name="surmark950410/color/r" value="0.8"/>
+            <param name="surmark950410/color/g" value="0.2"/>
+            <param name="surmark950410/color/b" value="0.2"/>
+            <param name="surmark950410/color/a" value="0.8"/>
+        </node>
 </launch>

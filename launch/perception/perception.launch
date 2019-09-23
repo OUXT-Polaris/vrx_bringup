@@ -1,6 +1,7 @@
 <?xml version="1.0"?>
 <launch>
     <arg name="jsk_bbox_topic" default="/pointcloud_processing/cluster_indices_decomposer/boxes"/>
+    <arg name="vision_info_topic" default="/vision_info_server_node/vision_info"/>
 
     <!-- Info Server -->
     <include file="$(find vision_info_server)/launch/vision_info_server.launch">
@@ -29,6 +30,7 @@
             <arg name="camera_info_topic" value="camera_info"/>
             <arg name="jsk_bbox_topic" value="$(arg jsk_bbox_topic)"/>
             <arg name="image_topic" value="/left_camera/image_raw"/>
+            <arg name="vision_info_topic" default="$(arg vision_info_topic)"/>
         </include>
     </group>
 
@@ -37,6 +39,7 @@
             <arg name="camera_info_topic" default="camera_info"/>
             <arg name="jsk_bbox_topic" default="$(arg jsk_bbox_topic)"/>
             <arg name="image_topic" value="/right_camera/image_raw"/>
+            <arg name="vision_info_topic" default="$(arg vision_info_topic)"/>
         </include>
     </group>
 
@@ -45,6 +48,7 @@
             <arg name="camera_info_topic" default="camera_info"/>
             <arg name="jsk_bbox_topic" default="$(arg jsk_bbox_topic)"/>
             <arg name="image_topic" value="/middle_camera/image_raw"/>
+            <arg name="vision_info_topic" default="$(arg vision_info_topic)"/>
         </include>
     </group>
 </launch>

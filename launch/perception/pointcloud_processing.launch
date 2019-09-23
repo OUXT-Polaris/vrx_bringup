@@ -2,9 +2,22 @@
 <launch>
     <arg name="manager_name" default="pcl_manager"/>
     <arg name="manager_threads" default="16" />
+    <arg name="merged_detection_topic" default="detection_merger/detection"/>
+    <arg name="points_object_topic" default="points_object"/>
 
     <node pkg="nodelet" type="nodelet" name="$(arg manager_name)" args="manager" output="screen">
         <param name="num_worker_threads" value="$(arg manager_threads)" />
+    </node>
+
+    <node pkg="nodelet" type="nodelet" name="detection_merger" args="load detection_merger/DetectionMerger $(arg manager_name)" output="screen">
+        <remap from="/pointcloud_processing/detection_merger/input/detection_0" to="/left_camera/cluster_image_fusion/fusion_result"/>
+        <remap from="/pointcloud_processing/detection_merger/input/detection_1" to="/middle_camera/cluster_image_fusion/fusion_result"/>
+        <remap from="/pointcloud_processing/detection_merger/input/detection_2" to="/right_camera/cluster_image_fusion/fusion_result"/>
+        <remap from="~output/detection" to="$(arg merged_detection_topic)"/>
+        <rosparam>
+            num_detections : 3
+            output_frame : base_link
+        </rosparam>
     </node>
     
     <node pkg="nodelet" type="nodelet" name="concat_filter" args="load pcl/PointCloudConcatenateDataSynchronizer $(arg manager_name)" output="screen">
@@ -20,18 +33,18 @@
     </node>
 
     <node pkg="nodelet" type="nodelet" name="euclidean_cluster_extraction" args="load jsk_pcl/EuclideanClustering $(arg manager_name)" output="screen">
-        <remap from="~input" to="points_object"/>
+        <remap from="~input" to="$(arg points_object_topic)"/>
         <remap from="~output" to="clusters" />
         <rosparam>
-            tolerance : 60.0
+            tolerance : 200.0
             label_tracking_tolerance : 2.0
-            max_size : 30
-            min_size : 1
+            max_size : 200
+            min_size : 10
         </rosparam>
     </node>
 
     <node name="cluster_indices_decomposer" pkg="nodelet" type="nodelet" args="load jsk_pcl/ClusterPointIndicesDecomposer $(arg manager_name)">
-        <remap from="~input" to="points_object"/>
+        <remap from="~input" to="$(arg points_object_topic)"/>
         <remap from="~target" to="clusters"/>
         <rosparam>
             queue_size: 10
@@ -40,7 +53,7 @@
 
     <node name="crop_hull_filter" pkg="nodelet" type="nodelet" args="load pcl/CropHullFilter $(arg manager_name)">
         <remap from="~input" to="points_raw"/>
-        <remap from="~output" to="points_object"/>
+        <remap from="~output" to="$(arg points_object_topic)"/>
         <rosparam file="$(find vrx_bringup)/config/coast_line0_crop.yaml" command="load"/>
         <param name="crop_outside" value="false"/>
         <param name="output_frame_id" value="base_link"/>
@@ -62,19 +75,27 @@
         <param name="angle_max" value="3.14159265359"/>
     </node>
 
-    <node pkg="nodelet" type="nodelet" name="crop_box_filter" args="load pcl/CropBox pcl_manager" output="screen">
+    <node pkg="nodelet" type="nodelet" name="crop_box_filter" args="load pcl/CropBox $(arg manager_name)" output="screen">
         <remap from="~input" to="points_concat"/>
         <remap from="~output" to="points_raw" />
         <rosparam>
-        min_x: -2.0
-        max_x: 3.0
-        min_y: -1.25
-        max_y: 1.25
-        min_z: -1.0
-        max_z: 3.0
-        negative: True
-        output_frame : base_link
-        input_frame : base_link
+            min_x: -2.0
+            max_x: 3.0
+            min_y: -1.25
+            max_y: 1.25
+            min_z: -1.0
+            max_z: 3.0
+            negative: True
+            output_frame : base_link
+            input_frame : base_link
+        </rosparam>
+    </node>
+
+    <node pkg="nodelet" type="nodelet" name="cluster_tracker" args="load cluster_tracker/ClusterTracker $(arg manager_name)" output="screen">
+        <remap from="~input/cluster_bbox" to="$(arg merged_detection_topic)"/>
+        <remap from="~input/pointcloud" to="$(arg points_object_topic)"/>
+        <rosparam>
+            robot_frame: base_link
         </rosparam>
     </node>
 </launch>

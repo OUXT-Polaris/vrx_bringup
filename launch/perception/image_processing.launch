@@ -12,12 +12,13 @@
     <arg name="bbox_rects_topic" default="bboxs_rects"/>
     <arg name="bbox_topic" default="bboxs"/>
     <arg name="detection_topic" default="vision_darknet_detect/detection"/>
+    <arg name="vision_info_topic" default="vision_info_server_node/vision_info"/>
 
-    <node pkg="nodelet" type="nodelet" name="$(arg manager_name)" args="manager" output="screen">
+    <node pkg="nodelet" type="nodelet" name="$(arg manager_name)" args="manager" output="screen" respawn="true">
         <param name="num_worker_threads" value="$(arg manager_threads)" />
     </node>
 
-    <node name="bounding_box_to_rect" pkg="nodelet" type="nodelet" args="load jsk_perception/BoundingBoxToRect $(arg manager_name)">
+    <node name="bounding_box_to_rect" pkg="nodelet" type="nodelet" args="load jsk_perception/BoundingBoxToRect $(arg manager_name)" respawn="true">
         <remap from="~input" to="$(arg jsk_bbox_topic)"/>
         <remap from="~input/info" to="$(arg camera_info_topic)"/>
         <remap from="~output" to="$(arg jsk_bbox_rects_topic)"/>
@@ -27,17 +28,24 @@
         </rosparam>
     </node>
 
-    <node name="jsk_rect_to_vision_msgs_detection" pkg="nodelet" type="nodelet" args="load jsk_to_vision_msgs/JskToVisionMsgs $(arg manager_name)">
+    <node name="jsk_rect_to_vision_msgs_detection" pkg="nodelet" type="nodelet" args="load jsk_to_vision_msgs/JskToVisionMsgs $(arg manager_name)" respawn="true">
         <remap from="~input/rect" to="$(arg jsk_bbox_rects_topic)"/>
         <remap from="~input/bbox" to="$(arg jsk_bbox_topic)"/>
         <remap from="~output/detection_2d" to="$(arg bbox_rects_topic)"/>
         <remap from="~output/detection_3d" to="$(arg bbox_topic)"/>
+        <rosparam>
+            padding_ratio_width : 0.1
+            padding_ratio_height : 0.1
+        </rosparam>
     </node>
 
-    <node name="cluster_image_fusion" pkg="nodelet" type="nodelet" args="load cluster_image_fusion/ClusterImageFusion $(arg manager_name)">
+    <node name="cluster_image_fusion" pkg="nodelet" type="nodelet" args="load cluster_image_fusion/ClusterImageFusion $(arg manager_name)" respawn="true">
         <remap from="~input/image_detection" to="$(arg detection_topic)"/>
         <remap from="~input/cluster_rect" to="$(arg bbox_rects_topic)"/>
+        <remap from="~input/cluster_bbox" to="$(arg bbox_topic)"/>
         <remap from="~input/camera_info" to="$(arg camera_info_topic)"/>
+        <remap from="~input/vision_info" to="$(arg vision_info_topic)"/>
+        <remap from="~output/fusion_result" to="~fusion_result"/>
     </node>
 
     <group if="$(arg use_tiny_yolo)">
