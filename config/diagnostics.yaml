@@ -1,0 +1,4 @@
+analyzers:
+  temperature:
+    type: GenericAnalyzer
+    path: upper-temperature

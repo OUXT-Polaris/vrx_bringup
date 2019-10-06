@@ -8,7 +8,7 @@
     <arg name="geopose_topic" default="/nmea_to_geopose_node/geopose"/>
     <arg name="nmea_topic" default="/nmea_sentence"/>
     <arg name="update_rate" default="30"/>
-    <arg name="num_particles" default="300"/>
+    <arg name="num_particles" default="50"/>
     <arg name="twist_topic" default="/imu_to_twist_node/twist"/>
     <arg name="pose_topic" default="/geopose_converter_node/pose"/>
     <arg name="imu_topic" default="/imu/data"/>
@@ -50,8 +50,8 @@
         <arg name="pose_topic" value="$(arg pose_topic)"/>
         <arg name="publish_marker" value="true"/>
         <arg name="respawn" value="true"/>
-        <arg name="expansion_reset_ess_threashold" value="5"/>
-        <arg name="sensor_reset_ess_threashold" value="3"/>
+        <arg name="expansion_reset_threashold" value="30"/>
+        <arg name="sensor_reset_threashold" value="10"/>
         <arg name="sensor_reset_radius" value="5.0"/>
         <arg name="weight_position" value="0.5"/>
         <arg name="weight_orientation" value="0.5"/>
@@ -66,6 +66,7 @@
     <include file="$(find odom_frame_publisher)/launch/odom_frame_publisher.launch">
         <arg name="current_twist_topic" value="$(arg twist_topic)/smoothed"/>
         <arg name="current_pose_topic" value="/pf_localization_node/current_pose"/>
+        <arg name="publish_2d_odom" value="true"/>
     </include>
 
     <!-- Geographic Conversion -->

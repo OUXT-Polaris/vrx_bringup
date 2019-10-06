@@ -1,5 +1,7 @@
 <?xml version="1.0"?>
 <launch>
+    <arg name="with_aws" default="false"/>
+
     <!-- Simulation -->
     <include file="$(find vrx_bringup)/launch/simulation/simulation.launch"/>
 
@@ -19,5 +21,7 @@
     <include file="$(find vrx_bringup)/launch/visualization/visualization.launch" />
 
     <!-- Tools -->
-    <!--<include file="$(find vrx_bringup)/launch/tools/tools.launch" />-->
+    <include file="$(find vrx_bringup)/launch/tools/tools.launch">
+        <arg name="with_aws" value="$(arg with_aws)"/>
+    </include>
 </launch>

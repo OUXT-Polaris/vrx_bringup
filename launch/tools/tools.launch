@@ -1,5 +1,10 @@
 <?xml version="1.0"?>
 <launch>
     <!--<include file="$(find vrx_bringup)/launch/tools/mqtt.launch" />-->
-    <include file="$(find vrx_bringup)/launch/tools/webrtc.launch" />
+    <!--<include file="$(find vrx_bringup)/launch/tools/webrtc.launch" />-->
+    <arg name="with_aws" default="false"/>
+
+    <group if="$(arg with_aws)">
+        <include file="$(find vrx_bringup)/launch/tools/aws.launch" />
+    </group>
 </launch>
