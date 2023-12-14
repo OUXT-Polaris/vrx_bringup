@@ -1,5 +1,0 @@
-bridge:
-  - factory: mqtt_bridge.bridge:RosToMqttBridge
-    msg_type: geographic_msgs.msg:GeoPose
-    topic_from: /nmea_to_geopose_node/geopose
-    topic_to: /nmea_to_geopose_node/geopose
