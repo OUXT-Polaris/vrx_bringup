@@ -1,6 +1,0 @@
-<?xml version="1.0"?>
-<launch>
-    <include file="$(find vrx_gazebo)/launch/sandisland.launch">
-        <arg name="urdf" default="$(find vrx_description)/urdf/ouxt_wamv.urdf"/>
-    </include>
-</launch>
