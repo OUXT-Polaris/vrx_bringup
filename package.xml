@@ -1,42 +1,18 @@
 <?xml version="1.0"?>
-<package format="2">
-  <name>vrx_bringup</name>
-  <version>0.0.0</version>
-  <description>The vrx_bringup package</description>
+<?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="3">
+  <name>vrx_gz_bringup</name>
+  <version>1.0.0</version>
+  <description>TODO: Package description</description>
+  <maintainer email="kenntabsk@gmail.com">kokamoto</maintainer>
+  <license>Apach 2.0</license>
 
-  <maintainer email="ms.kataoka@gmail.com">Masaya Kataoka</maintainer>
+  <buildtool_depend>ament_cmake</buildtool_depend>
 
-  <license>Apache v2</license>
+  <test_depend>ament_lint_auto</test_depend>
+  <test_depend>ament_lint_common</test_depend>
 
-  <buildtool_depend>catkin</buildtool_depend>
-  <build_depend>joint_state_publisher</build_depend>
-  <build_depend>robot_state_publisher</build_depend>
-  <build_export_depend>joint_state_publisher</build_export_depend>
-  <build_export_depend>robot_state_publisher</build_export_depend>
-  <exec_depend>joint_state_publisher</exec_depend>
-  <exec_depend>robot_state_publisher</exec_depend>
-  <exec_depend>rostate_machine</exec_depend>
-  <exec_depend>pf_localization</exec_depend>
-  <exec_depend>pcl_ros</exec_depend>
-  <exec_depend>tf</exec_depend>
-  <exec_depend>geometry_msgs</exec_depend>
-  <exec_depend>geodesy</exec_depend>
-  <exec_depend>rviz</exec_depend>
-  <exec_depend>rostate_machine</exec_depend>
-  <exec_depend>vrx_gazebo</exec_depend>
-  <!--<exec_depend>mqtt_bridge</exec_depend>-->
-  <exec_depend>webrtc_ros</exec_depend>
-  <exec_depend>opencv_apps</exec_depend>
-  <exec_depend>jsk_pcl_ros</exec_depend>
-  <exec_depend>jsk_perception</exec_depend>
-  <exec_depend>robotx_costmap_calculator</exec_depend>
-  <exec_depend>kinesis_video_streamer</exec_depend>
-  <exec_depend>cloudwatch_logger</exec_depend>
-  <exec_depend>health_metric_collector</exec_depend>
-  <exec_depend>cloudwatch_metrics_collector</exec_depend>
-  <!-- The export tag contains other, unspecified, tags -->
   <export>
-    <!-- Other tools can request additional information be placed here -->
-
+    <build_type>ament_cmake</build_type>
   </export>
 </package>
